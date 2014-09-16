@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var moment = require('moment');
-moment().format();
 
 var chartSchema = new mongoose.Schema({
   	zingId: Number,
@@ -18,9 +17,10 @@ var chartSchema = new mongoose.Schema({
 var Chart = mongoose.model('Chart', chartSchema);
 
 
-// CHANGE ME
-mongoose.connect('localhost');
-
+mongoose.connect("mongodb://zingchart-playground:zingnimbus1@ds035740.mongolab.com:35740/zingchart-demo-db");
+mongoose.connection.on('error', function() {
+	console.error('MongoDB Connection Error');
+});
 
 var app = express();
 
