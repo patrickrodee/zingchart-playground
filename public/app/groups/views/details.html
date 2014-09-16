@@ -1,0 +1,29 @@
+
+<material-dialog>
+   <material-toolbar class="material-theme-dark">
+        <div class="material-toolbar-tools">
+          <span class="material-flex">Group Form</span>
+        </div>
+    </material-toolbar>
+        <div class="dialog-content">
+              <form name="userForm">    
+                      <div class="material-input-group-theme-zing material-input-group">
+                                <label for="name">Group Name</label>
+                                <input id="name" type="text" ng-model="group.name" >
+                      </div>
+                       <div class="material-input-group-theme-zing">
+                                <label for="groupType">Access Type</label>
+                                <select id="groupType" class="form-control" ng-model="group.type">
+                                    <option value="admin">Admin</option>
+                                    <option value="editor">Editor</option>
+                                    <option value="read">Read Only</option>
+                                </select>
+                      </div>
+              </form>
+        </div>
+          <div class="dialog-actions" layout="horizontal" layout-align="end">
+                <button ng-click="save()" ng-show="group._id" ng-disabled="group.$invalid" class="material-button"><i class="icon-white glyphicon glyphicon-plus"></i> Save</button>
+                <button ng-click="add()" type="submit" ng-show="!group._id" ng-disabled="group.$invalid" class="material-button"> Add</button>
+                <button ng-click="cancel()" class="material-button">Cancel</button>
+          </div>
+</material-dialog>

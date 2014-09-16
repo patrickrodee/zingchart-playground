@@ -1,0 +1,1201 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+
+<title> ZingChart - JavaScript Charting Library - HTML5 Charts</title>
+
+
+<meta name="keywords" content="chart software, javascript chart, html5 charts, charting library javascript, web charts, html5 chart library">
+<meta name="description" content="ZingChart is a JavaScript charting library that renders data visualizations in HTML5 Canvas, SVG, VML, and Flash. ">
+<meta name="author" content="PINT [ www.pint.com ]">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+
+    
+<link href="http://www.zingchart.com/css/select2.css" rel="stylesheet" media="screen">  
+<link href="http://www.zingchart.com/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen,print">
+<link href="http://www.zingchart.com/css/common.css" rel="stylesheet" media="screen,print">
+<!--[if IE]><link href="http://www.zingchart.com/css/ie.css" rel="stylesheet" media="screen,print"><![endif]-->
+<link href="http://www.zingchart.com/css/common-docs.css" rel="stylesheet">
+    
+<script>
+var ZINGCHART = {};
+// Support/Required JS/CSS files (path)
+ZINGCHART.requireJsFiles = [];
+ZINGCHART.requireCssFiles = [];
+ZINGCHART.requireJs = function(path) { ZINGCHART.requireJsFiles.push(path); };
+ZINGCHART.requireCss = function(path) { ZINGCHART.requireCssFiles.push(path); };
+// Execution Code
+ZINGCHART.onStartFns = [];
+ZINGCHART.addOnStartFn = function(fn) { ZINGCHART.onStartFns.push(fn); };
+</script>
+<script>document.documentElement.className='js';</script>
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Logo -->
+<div data-zc-logo>
+    <h1><span id="logo">ZingChart</span></h1>
+</div>
+<a href="#nav-primary" data-zc-nostyle>Skip to navigation</a>
+
+<!-- Content -->
+<div data-zc-content>
+
+    <!-- Banners -->
+    <div id="banners-homepage" data-zc-banners>
+    
+                <div data-zc-banner="1">
+            <div data-zc-inner>
+            
+                <div data-zc-banner-content>
+                
+                    <h2>The JavaScript charting library that does it all.</h2>
+                    
+                    <div data-zc-buttons>
+                        <a href="/docs/" id="docsLink" data-zc-btn="2" data-zc-animate="zoom">View Docs</a> 
+                        <a href="/gallery/" data-zc-btn="1" data-zc-animate="zoom">See more charts</a>
+                    </div>
+                
+                </div>
+                
+
+                <![if !IE]>
+                <div id="chart-slide-container">
+                        <div id="banner_1"></div>
+                        <!--<div class="slide" id="banner_1"></div>
+                        <div class="slide" id="banner_2"></div>
+                        <div class="slide" id="banner_3"></div>-->
+                </div>
+                <![endif]>
+                <!--[if IE 9]>
+                <div id="chart-slide-container">
+                        <div class="slide" id="banner_1"></div>
+                        <div class="slide" id="banner_2"></div>
+                        <div class="slide" id="banner_3"></div>
+                </div>
+                <![endif]-->
+                <!--[if lt IE 9]>
+                <div id="ie-chart-container">
+                    <div id="ie-banner"></div>
+                </div>
+                <![endif]-->
+                
+            </div>
+        </div>
+
+
+
+        <script>
+        
+        // WRITE to below core scripts 
+        ZINGCHART.addOnStartFn( function() {
+
+            var desktop = [
+    {
+        "nodeId": 27647,
+        "height": "400",
+        "json": "{\n    \"background-color\":\"#003849\",\n    \"graphset\":[\n        {\n            \"type\":\"area\",\n            \"height\":\"50%\",\n            \"width\":\"97%\",\n            \"background-color\":\"none\",\n            \"title\":{\n                \"x\":\"9%\",\n                \"y\":\"3%\",\n                \"text-align\":\"left\",\n                \"background-color\":\"none\",\n                \"text\":\"CHARTING SUCCESS\",\n                \"font-color\":\"#ffffff\",\n                \"font-family\":\"arial\"\n            },\n            \"labels\":[\n                {\n                    \"text\":\"Q3: You chose<br><strong>ZingChart!</strong>\",\n                    \"x\":\"55%\",\n                    \"y\":\"35%\",\n                    \"backgroundColor\":\"#fff\",\n                    \"font-color\":\"#003849\",\n                    \"border-width\":\"1px\",\n                    \"border-radius\":\"6px\",\n                    \"border-color\":\"#ecf0f1\",\n                    \"font-family\":\"Arial\",\n                    \"font-size\":11,\n                    \"padding\":\"8 10 8 10\",\n                    \"callout\":true,\n                    \"callout-offset\":\"25%\",\n                    \"callout-hook\":\"node:index=8\",\n                    \"shadow\":false\n                }\n            ],\n            \"plotarea\":{\n                \"margin\":\"40 0 20 60\"\n            },\n            \"scale-x\":{\n                \"values\":[\" \",\" \",\"2013\",\" \",\" \",\" \",\"2014\",\" \",\"\",\"\",\"2015\",\"\"],\n                \"flat\":false,\n                \"line-color\":\"#55717c\",\n                \"line-width\":\"1px\",\n                \"offset-y\":\"4px\",\n                \"guide\":{\n                    \"line-style\":\"solid\",\n                    \"line-width\":1,\n                    \"line-color\":\"#55717c\"\n                },\n                \"label\":{\n                    \"font-size\":\"11px\",\n                    \"font-family\":\"Arial\",\n                    \"font-color\":\"#c0c0c0\",\n                    \"font-weight\":\"normal\"\n                },\n                \"item\":{\n                    \"font-size\":\"10px\",\n                    \"font-family\":\"Arial\",\n                    \"font-color\":\"#c0c0c0\"\n                },\n                \"tick\":{\n                    \"visible\":false\n                }\n            },\n            \"scale-y\":{\n                \"line-color\":\"#55717c\",\n                \"line-width\":\"1px\",\n                \"values\":\"0:10000:2000\",\n                \"multiplier\":true,\n                \"label\":{\n                    \"text\":\"Positive Response\",\n                    \"font-size\":\"10px\",\n                    \"font-family\":\"Arial\",\n                    \"font-color\":\"#c0c0c0\",\n                    \"font-weight\":\"normal\"\n                },\n                \"item\":{\n                    \"font-size\":\"9px\",\n                    \"font-family\":\"Arial\",\n                    \"font-color\":\"#c0c0c0\"\n                },\n                \"guide\":{\n                    \"line-style\":\"solid\",\n                    \"line-width\":1,\n                    \"line-color\":\"#fff\",\n                    \"alpha\":\".2\"\n                },\n                \"tick\":{\n                    \"visible\":false\n                }\n            },\n            \"plot\":{\n                \"line-color\":\"#fff\",\n                \"line-width\":\"4px\",\n                \"marker\":{\n                     \"rules\":[\n                    {\n                        \"rule\":\"%v != 2000\",\n                        \"background-color\":\"#fff\",\n                        \"border-color\":\"#fff\"\n                    },\n                    {\n                        \"rule\":\"%v == 2000\",\n                        \"size\":\"6\",\n                        \"background-color\":\"#fff\",\n                        \"border-color\":\"#00baf0\",\n                        \"border-width\":\"3px\"\n                    }\n                ],\n                    \"shadow\":false\n                }\n            },\n            \"series\":[\n                {\n                    \"values\":[800,900,700,500,400,800,1800,1990,2000,8000,10000,10000],\n                    \"background-color\":\"#6597a2\",\n                    \"hover-state\":{\n                        \"visible\":0\n                    },\n                    \"tooltip\":{\n                        \"background-color\":\"#2f6672\",\n                        \"border-radius\":\"6px\",\n                        \"shadow\":false,\n                        \"padding\":\"5px 10px\"\n                    },\n                    \"animation\":{\n                        \"delay\":0,\n                        \"effect\":4,\n                        \"speed\":\"100\",\n                        \"method\":\"0\",\n                        \"sequence\":\"0\"\n                    }\n                }\n            ]\n        },\n        {\n            \"type\":\"hbar\",\n            \"height\":\"50%\",\n            \"width\":\"68%\",\n            \"y\":\"50%\",\n            \"x\":\"0%\",\n            \"background-color\":\"none\",\n            \"stacked\":true,\n            \"stack-type\":\"100%\",\n            \"title\":{\n                \"text\":\"TOP FEATURES\",\n                \"background-color\":\"none\",\n                \"text-align\":\"left\",\n                \"x\":\"13%\",\n                \"y\":\"9%\",\n                \"font-family\":\"arial\"\n            },\n            \"plot\":{\n                \"bar-space\":\"10px\",\n                \"animation\":{\n                    \"delay\":0,\n                    \"effect\":4,\n                    \"speed\":\"1000\",\n                    \"method\":\"0\",\n                    \"sequence\":\"0\"\n                }\n            },\n            \"plotarea\":{\n                \"margin\":\"50 0 30 60\"\n            },\n            \"scale-x\":{\n                \"values\":[\"Data<br>Analyst\",\"Designer\",\"Developer\"],\n                \"line-color\":\"none\",\n                \"line-width\":\"1px\",\n                \"offset-y\":\"2%\",\n                \"tick\":{\n                    \"visible\":false\n                },\n                \"guide\":{\n                    \"visible\":false\n                },\n                \"item\":{\n                    \"font-size\":\"10px\",\n                    \"font-family\":\"Arial\",\n                    \"font-color\":\"#c0c0c0\"\n                }\n            },\n            \"scale-y\":{\n                \"visible\":\"false\",\n                \"guide\":{\n                    \"line-style\":\"solid\",\n                    \"line-width\":\"1px\",\n                    \"line-color\":\"#55717c\"\n                },\n                \"tick\":{\n                    \"visible\":false\n                }\n            },\n            \"series\":[\n                {\n                    \"values\":[70,6,9],\n                    \"text\":\"Big Data-Friendly\",\n                    \"stack\":1,\n                    \"background-color\":\"#00baf0\",\n                    \"tooltip\":{\n                        \"text\":\"%t\",\n                        \"background-color\":\"#00baf0\",\n                        \"font-color\":\"#fff\",\n                        \"border-radius\":\"6px\",\n                        \"border-width\":\"1px\",\n                        \"border-color\":\"none\",\n                        \"shadow\":true,\n                        \"shadow-color\":\"#fff\",\n                        \"padding\":\"8% 10%\"\n                    }\n                },\n                {\n                    \"values\":[15,72,9],\n                    \"text\":\"Styling Options\",\n                    \"stack\":1,\n                    \"background-color\":\"#7ca82b\",\n                    \"tooltip\":{\n                        \"text\":\"%t\",\n                        \"background-color\":\"#7ca82b\",\n                        \"font-color\":\"#ffffff\",\n                        \"border-radius\":\"6px\",\n                        \"border-width\":\"1px\",\n                        \"border-color\":\"none\",\n                        \"shadow\":true,\n                        \"shadow-color\":\"#fff\",\n                        \"padding\":\"8% 10%\"\n                    }\n                },\n                {\n                    \"values\":[7,13,84],\n                    \"text\":\"Loaded API\",\n                    \"stack\":1,\n                    \"background-color\":\"#cc3300\",\n                    \"tooltip\":{\n                        \"text\":\"%t\",\n                        \"background-color\":\"#cc3300\",\n                        \"font-color\":\"#ffffff\",\n                        \"border-radius\":\"6px\",\n                        \"border-width\":\"1px\",\n                        \"border-color\":\"none\",\n                        \"shadow\":true,\n                        \"shadow-color\":\"#fff\",\n                        \"padding\":\"8% 10%\"\n                    }\n                }\n            ]\n        },\n        {\n            \"type\":\"pie\",\n            \"x\":\"60%\",\n            \"y\":\"54%\",\n            \"width\":\"46%\",\n            \"height\":\"46%\",\n            \"background-color\":\"none\",\n            \"title\":{\n                \"text\":\"USER SATISFATION\",\n                \"background-color\":\"none\",\n                \"font-family\":\"arial\"\n            },\n            \"plotarea\":{\n                \"margin\":\"0\"\n            },\n            \"plot\":{\n                \"slice\":35,\n                \"ref-angle\":270,\n                \"value-box\":{\n                    \"visible\":true,\n                    \"anchor\":\"c\",\n                    \"font-family\":\"arial\",\n                    \"type\":\"first\",\n                    \"connected\":false,\n                    \"placement\":\"in\",\n                    \"text\":\"%v%\",\n                    \"rules\":[\n                        {\n                            \"rule\":\"%v < 21\",\n                            \"visible\":false\n                        }\n                    ],\n                    \"font-color\":\"#fff\",\n                    \"font-size\":\"17px\",\n                    \"offset-x\":\"-2%\",\n                    \"offset-y\":\"-46%\"\n                },\n                \"animation\":{\n                    \"delay\":0,\n                    \"effect\":2,\n                    \"speed\":\"400\",\n                    \"method\":\"0\",\n                    \"sequence\":\"1\"\n                }\n            },\n            \"shapes\":[\n                {\n                    \"type\":\"triangle\",\n                    \"size\":\"5%\",\n                    \"y\":\"51%\",\n                    \"x\":\"42%\",\n                    \"background-color\":\"#7ca82b\"\n                }\n            ],\n            \"series\":[\n                {\n                    \"values\":[95],\n                    \"text\":\"Extremely Satisfied\",\n                    \"background-color\":\"#00baf0\",\n                    \"border-width\":\"0px\",\n                    \"shadow\":0,\n                    \"tooltip\":{\n                        \"text\":\"%v% are<br><strong>%t</strong>\",\n                        \"background-color\":\"#00baf0\",\n                        \"font-color\":\"#fff\",\n                        \"border-radius\":\"6px\",\n                        \"border-width\":\"1px\",\n                        \"border-color\":\"none\",\n                        \"shadow\":true,\n                        \"shadow-color\":\"#fff\",\n                        \"padding\":\"8% 10%\"\n                    }\n                },\n                {\n                    \"values\":[5],\n                    \"background-color\":\"#fff\",\n                    \"alpha\":0.1,\n                    \"border-width\":\"0px\",\n                    \"shadow\":0,\n                    \"tooltip\":{\n                        \"visible\":false\n                    }\n                }\n            ]\n        }\n    ]\n}"
+    }
+]
+               ,mobile = [
+    {
+        "nodeId": 27644,
+        "height": "210",
+        "json": "{\r\n    \"background-color\":\"#003849\",\r\n    \"graphset\":[\r\n        {\r\n            \"type\":\"area\",\r\n            \"height\":\"50%\",\r\n            \"width\":\"97%\",\r\n            \"background-color\":\"none\",\r\n            \"title\":{\r\n                \"x\":\"9%\",\r\n                \"y\":\"3%\",\r\n                \"text-align\":\"left\",\r\n                \"background-color\":\"none\",\r\n                \"text\":\"CHARTING SUCCESS\",\r\n                \"font-color\":\"#ffffff\",\r\n                \"font-family\":\"arial\",\r\n                \"font-size\":\"11px\"\r\n            },\r\n            \"labels\":[\r\n                {\r\n                    \"text\":\"Q3: You chose<br><strong>ZingChart!</strong>\",\r\n                    \"x\":\"49%\",\r\n                    \"y\":\"27%\",\r\n                    \"backgroundColor\":\"#fff\",\r\n                    \"font-color\":\"#003849\",\r\n                    \"border-width\":\"1px\",\r\n                    \"border-radius\":\"6px\",\r\n                    \"border-color\":\"#ecf0f1\",\r\n                    \"font-family\":\"Arial\",\r\n                    \"font-size\":11,\r\n                    \"padding\":\"4% 8% 4% 8%\",\r\n                    \"callout\":true,\r\n                    \"callout-offset\":\"27%\",\r\n                    \"callout-hook\":\"node:index=8\",\r\n                    \"shadow\":false\r\n                }\r\n            ],\r\n            \"plotarea\":{\r\n                \"margin\":\"40 0 20 60\"\r\n            },\r\n            \"scale-x\":{\r\n                \"values\":[\" \",\" \",\"2013\",\" \",\" \",\" \",\"2014\",\" \",\"\",\"\",\"2015\",\"\"],\r\n                \"flat\":false,\r\n                \"line-color\":\"#55717c\",\r\n                \"line-width\":\"1px\",\r\n                \"offset-y\":\"4px\",\r\n                \"guide\":{\r\n                    \"line-style\":\"solid\",\r\n                    \"line-width\":1,\r\n                    \"line-color\":\"#55717c\"\r\n                },\r\n                \"label\":{\r\n                    \"font-size\":\"11px\",\r\n                    \"font-family\":\"Arial\",\r\n                    \"font-color\":\"#c0c0c0\",\r\n                    \"font-weight\":\"normal\"\r\n                },\r\n                \"item\":{\r\n                    \"font-size\":\"10px\",\r\n                    \"font-family\":\"Arial\",\r\n                    \"font-color\":\"#c0c0c0\"\r\n                },\r\n                \"tick\":{\r\n                    \"visible\":false\r\n                }\r\n            },\r\n            \"scale-y\":{\r\n                \"line-color\":\"#55717c\",\r\n                \"line-width\":\"1px\",\r\n                \"values\":\"0:10000:2000\",\r\n                \"multiplier\":true,\r\n                \"label\":{\r\n                    \"text\":\"Positive<br>Response\",\r\n                    \"font-size\":\"10px\",\r\n                    \"font-family\":\"Arial\",\r\n                    \"font-color\":\"#c0c0c0\",\r\n                    \"font-weight\":\"normal\"\r\n                },\r\n                \"item\":{\r\n                    \"font-size\":\"9px\",\r\n                    \"font-family\":\"Arial\",\r\n                    \"font-color\":\"#c0c0c0\"\r\n                },\r\n                \"guide\":{\r\n                    \"line-style\":\"solid\",\r\n                    \"line-width\":1,\r\n                    \"line-color\":\"#fff\",\r\n                    \"alpha\":\".2\"\r\n                },\r\n                \"tick\":{\r\n                    \"visible\":false\r\n                }\r\n            },\r\n            \"plot\":{\r\n                \"line-color\":\"#fff\",\r\n                \"line-width\":\"2px\",\r\n                \"marker\":{\r\n                     \"rules\":[\r\n                    {\r\n                        \"rule\":\"%v != 2000\",\r\n                        \"background-color\":\"#fff\",\r\n                        \"border-color\":\"#fff\"\r\n                    },\r\n                    {\r\n                        \"rule\":\"%v == 2000\",\r\n                        \"size\":\"6\",\r\n                        \"background-color\":\"#fff\",\r\n                        \"border-color\":\"#00baf0\",\r\n                        \"border-width\":\"3px\"\r\n                    }\r\n                ],\r\n                    \"shadow\":false\r\n                }\r\n            },\r\n            \"series\":[\r\n                {\r\n                    \"values\":[800,900,700,500,400,800,1800,1990,2000,8000,10000,10000],\r\n                    \"background-color\":\"#6597a2\",\r\n                    \"hover-state\":{\r\n                        \"visible\":0\r\n                    },\r\n                    \"tooltip\":{\r\n                        \"background-color\":\"#2f6672\",\r\n                        \"border-radius\":\"6px\",\r\n                        \"shadow\":false,\r\n                        \"padding\":\"5px 10px\"\r\n                    },\r\n                    \"animation\":{\r\n                        \"delay\":0,\r\n                        \"effect\":4,\r\n                        \"speed\":\"100\",\r\n                        \"method\":\"0\",\r\n                        \"sequence\":\"0\"\r\n                    }\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"type\":\"hbar\",\r\n            \"height\":\"50%\",\r\n            \"width\":\"60%\",\r\n            \"y\":\"50%\",\r\n            \"x\":\"0%\",\r\n            \"background-color\":\"none\",\r\n            \"stacked\":true,\r\n            \"stack-type\":\"100%\",\r\n            \"title\":{\r\n                \"text\":\"TOP FEATURES\",\r\n                \"background-color\":\"none\",\r\n                \"text-align\":\"left\",\r\n                \"x\":\"13%\",\r\n                \"y\":\"9%\",\r\n                \"font-family\":\"arial\",\r\n                \"font-size\":\"11px\"\r\n            },\r\n            \"plot\":{\r\n                \"bar-space\":\"10px\",\r\n                \"animation\":{\r\n                    \"delay\":0,\r\n                    \"effect\":4,\r\n                    \"speed\":\"1000\",\r\n                    \"method\":\"0\",\r\n                    \"sequence\":\"0\"\r\n                }\r\n            },\r\n            \"plotarea\":{\r\n                \"margin\":\"40 0 10 60\"\r\n            },\r\n            \"scale-x\":{\r\n                \"values\":[\"Analyst\",\"Designer\",\"Developer\"],\r\n                \"line-color\":\"none\",\r\n                \"line-width\":\"1px\",\r\n                \"offset-y\":\"2%\",\r\n                \"tick\":{\r\n                    \"visible\":false\r\n                },\r\n                \"guide\":{\r\n                    \"visible\":false\r\n                },\r\n                \"item\":{\r\n                    \"font-size\":\"10px\",\r\n                    \"font-family\":\"Arial\",\r\n                    \"font-color\":\"#c0c0c0\"\r\n                }\r\n            },\r\n            \"scale-y\":{\r\n                \"visible\":\"false\",\r\n                \"guide\":{\r\n                    \"line-style\":\"solid\",\r\n                    \"line-width\":\"1px\",\r\n                    \"line-color\":\"#55717c\"\r\n                },\r\n                \"tick\":{\r\n                    \"visible\":false\r\n                }\r\n            },\r\n            \"series\":[\r\n                {\r\n                    \"values\":[70,6,9],\r\n                    \"text\":\"Big Data-Friendly\",\r\n                    \"stack\":1,\r\n                    \"background-color\":\"#00baf0\",\r\n                    \"tooltip\":{\r\n                        \"text\":\"%t\",\r\n                        \"background-color\":\"#00baf0\",\r\n                        \"font-color\":\"#fff\",\r\n                        \"border-radius\":\"6px\",\r\n                        \"border-width\":\"1px\",\r\n                        \"border-color\":\"none\",\r\n                        \"shadow\":true,\r\n                        \"shadow-color\":\"#fff\",\r\n                        \"padding\":\"5px 10px\"\r\n                    }\r\n                },\r\n                {\r\n                    \"values\":[15,72,9],\r\n                    \"text\":\"Styling Options\",\r\n                    \"stack\":1,\r\n                    \"background-color\":\"#7ca82b\",\r\n                    \"tooltip\":{\r\n                        \"text\":\"%t\",\r\n                        \"background-color\":\"#7ca82b\",\r\n                        \"font-color\":\"#ffffff\",\r\n                        \"border-radius\":\"6px\",\r\n                        \"border-width\":\"1px\",\r\n                        \"border-color\":\"none\",\r\n                        \"shadow\":true,\r\n                        \"shadow-color\":\"#fff\",\r\n                        \"padding\":\"5px 10px\"\r\n                    }\r\n                },\r\n                {\r\n                    \"values\":[7,13,84],\r\n                    \"text\":\"Loaded API\",\r\n                    \"stack\":1,\r\n                    \"background-color\":\"#cc3300\",\r\n                    \"tooltip\":{\r\n                        \"text\":\"%t\",\r\n                        \"background-color\":\"#cc3300\",\r\n                        \"font-color\":\"#ffffff\",\r\n                        \"border-radius\":\"6px\",\r\n                        \"border-width\":\"1px\",\r\n                        \"border-color\":\"none\",\r\n                        \"shadow\":true,\r\n                        \"shadow-color\":\"#fff\",\r\n                        \"padding\":\"5px 10px\"\r\n                    }\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"type\":\"pie\",\r\n            \"x\":\"58%\",\r\n            \"y\":\"54%\",\r\n            \"width\":\"40%\",\r\n            \"height\":\"40%\",\r\n            \"background-color\":\"none\",\r\n            \"title\":{\r\n                \"text\":\"USER SATISFATION\",\r\n                \"background-color\":\"none\",\r\n                \"font-family\":\"arial\",\r\n                \"font-size\":\"11px\"\r\n            },\r\n            \"plotarea\":{\r\n                \"margin\":\"40% 2% 2% 2%\"\r\n            },\r\n            \"plot\":{\r\n                \"slice\":30,\r\n                \"ref-angle\":270,\r\n                \"value-box\":{\r\n                    \"visible\":true,\r\n                    \"anchor\":\"c\",\r\n                    \"font-family\":\"arial\",\r\n                    \"type\":\"first\",\r\n                    \"connected\":false,\r\n                    \"placement\":\"in\",\r\n                    \"text\":\"%v%\",\r\n                    \"rules\":[\r\n                        {\r\n                            \"rule\":\"%v < 21\",\r\n                            \"visible\":false\r\n                        }\r\n                    ],\r\n                    \"font-color\":\"#fff\",\r\n                    \"font-size\":\"12px\",\r\n                    \"offset-x\":\"-4%\",\r\n                    \"offset-y\":\"-22%\"\r\n                },\r\n                \"animation\":{\r\n                    \"delay\":0,\r\n                    \"effect\":2,\r\n                    \"speed\":\"400\",\r\n                    \"method\":\"0\",\r\n                    \"sequence\":\"1\"\r\n                }\r\n            },\r\n            \"-shapes\":[\r\n                {\r\n                    \"type\":\"triangle\",\r\n                    \"size\":\"5%\",\r\n                    \"x\":\"51%\",\r\n                    \"y\":\"72%\",\r\n                    \"background-color\":\"#7ca82b\"\r\n                }\r\n            ],\r\n            \"series\":[\r\n                {\r\n                    \"values\":[95],\r\n                    \"text\":\"Extremely Satisfied\",\r\n                    \"background-color\":\"#00baf0\",\r\n                    \"border-width\":\"0px\",\r\n                    \"shadow\":0,\r\n                    \"tooltip\":{\r\n                        \"text\":\"%v% are<br><strong>%t</strong>\",\r\n                        \"background-color\":\"#00baf0\",\r\n                        \"font-color\":\"#fff\",\r\n                        \"border-radius\":\"6px\",\r\n                        \"border-width\":\"1px\",\r\n                        \"border-color\":\"none\",\r\n                        \"shadow\":true,\r\n                        \"shadow-color\":\"#fff\",\r\n                        \"padding\":\"5px 10px\"\r\n                    }\r\n                },\r\n                {\r\n                    \"values\":[5],\r\n                    \"background-color\":\"#fff\",\r\n                    \"alpha\":0.1,\r\n                    \"border-width\":\"0px\",\r\n                    \"shadow\":0,\r\n                    \"tooltip\":{\r\n                        \"visible\":false\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+    }
+];
+
+            function renderBannerCharts() {
+                var $container = $('#chart-slide-container')
+                  , containerWidth = $container.width()
+                  , containerHeight = $container.height()
+                  , size = desktop
+                  , count = 1
+                  , chart;
+                
+                if ( window.innerWidth < 980 ) {
+                    size = mobile;
+                }
+                
+                if (document.addEventListener) {
+                    for (var i = 0; i < size.length; i++) {
+                        chart = size[i];
+                            zingchart.render({
+                                id     : 'banner_' + count,
+                                height : containerHeight,
+                                width  : containerWidth,
+                                data   : JSON.parse(chart.json),
+                                output : "svg",
+                                defaults: {
+                                    "root":{
+                                        "gui":{
+                                            "behaviors":[ 
+                                                {"id":"SaveAsImage", "enabled":"none" },
+                                                {"id":"Print", "enabled":"none" },
+                                                {"id":"ViewSource", "enabled":"none" },
+                                                {"id":"BugReport","enabled":"all"},
+                                                {"id":"FullScreen","enabled":"none"},
+                                                {"id":"ZoomIn","enabled":"none"},
+                                                {"id":"ZoomOut","enabled":"none"},
+                                                {"id":"ViewAll","enabled":"none"},
+                                                {"id":"LogScale","enabled":"none"},
+                                                {"id":"DownloadPDF","enabled":"none"},
+                                                {"id":"3D","enabled":"none"},
+                                                {"id":"HideGuide","enabled":"none"}
+                                            ],
+                                            "context-menu":{
+                                               "button":{ "visible":"false" },
+                                               "gear":{ "visible":"false" }
+                                            } 
+                                        }
+                                    }
+                                }
+                            });
+                            count++;
+                    }
+                } else {
+                                                                setTimeout(function() {
+                            zingchart.render({
+                                id     : 'ie-chart-container',
+                                height : 380,
+                                width  : 540,
+                                data   : {
+            "type":"area",
+            "background-color":"#016B8B #003849",
+            "utc":true,
+            "font-family":"Arial",
+            "title":{
+                "y":"0px",
+                "text":"Animated Area Chart with Interactive Legend",
+                "background-color":"#01789d",
+                "font-color":"#fff",
+                "border-bottom":"1px solid #003849",
+                "font-size":"18",
+                "font-weight":"none",
+                "height":"40px"
+            },
+            "plotarea":{
+                "background-color":"#00BAF0",
+                "alpha":0.1,
+                "margin-top":"90px",
+                "margin-left":"80px",
+                "margin-right":"50px",
+                "margin-bottom":"55px"
+            },
+            "legend":{
+                "layout":"float",
+                "background-color":"none",
+                "toggle-action":"remove",
+                "border-width":0,
+                "shadow":0,
+                "margin":"50 auto auto auto",
+                "item":{
+                    "font-color":"#ffffff"
+                }
+            },
+            "scale-x":{
+                "min-value":1383292800000,
+                "shadow":0,
+                "step":3600000,
+                "line-color":"#00BAF0",
+                "tick":{
+                    "line-color":"#00BAF0"
+                },
+                "guide":{
+                    "line-color":"#003849",
+                    "alpha":0.6,
+                    "line-style":"solid"
+                },
+                "item":{
+                    "font-color":"#ffffff",
+                    "alpha":0.6,
+                    "padding-top":"5px"
+                },
+                "transform":{
+                    "type":"date",
+                    "all":"%D, %d %M<br />%h:%i %A",
+                    "guide":{
+                        "visible":false
+                    },
+                    "item":{
+                        "visible":false
+                    }
+                },
+                "label":{
+                    "visible":false
+                },
+                "minor-ticks":0
+            },
+            "scale-y":{
+                "values":"0:1000:250",
+                "line-color":"#00BAF0",
+                "shadow":0,
+                "tick":{
+                    "line-color":"#00BAF0"
+                },
+                "item":{
+                    "font-color":"#ffffff",
+                    "alpha":0.6,
+                    "padding-right":"5px"
+                },
+                "label":{
+                    "text":"Page Views",
+                    "font-color":"#ffffff"
+                },
+                "minor-ticks":0,
+                "thousands-separator":","
+            },
+            "crosshair-x":{
+                "line-color":"#003849",
+                "value-label":{
+                    "border-radius":"5px",
+                    "padding":"10px",
+                    "font-weight":"none"
+                },
+                "scale-label":{
+                    "font-color":"#ffffff",
+                    "padding":"5px 10px",
+                    "background-color":"#00baf0",
+                    "border-radius":"5px"
+                }
+            },
+            "tooltip":{
+                "visible":false
+            },
+            "plot":{
+                "tooltip-text":"%t views: %v",
+                "shadow":0,
+                "stacked":true,
+                "alpha-area":1,
+                "hover-state":{
+                "visible":false
+                },
+                "line-width":"3px",
+                "marker":{
+                    "type":"circle",
+                    "size":5
+                },
+                "hover-marker":{
+                    "type":"diamond",
+                    "size":6,
+                    "border-width":"1px"
+                }
+               
+                
+            },
+            "series":[
+                {
+                    "values":[220,250,340,280,380,260,220,170,250],
+                    "text":"Software Pricing",
+                    "line-color":"#e25833",
+                    "line-width":4,
+                    "background-color":"#9e2707 #cc3300",
+                    "marker":{
+                        "background-color":"#9e2707",
+                        "border-width":1,
+                        "shadow":0,
+                        "border-color":"#ef9684"
+                    },
+                    "legend-marker":{
+                        "type":"circle",
+                        "size":6,
+                        "shadow":0,
+                        "border-width":1,
+                        "background-color":"#9e2707",
+                        "border-color":"#ef9684"
+                        },
+                        "animation":{
+                    "delay":500,
+                    "effect":"ANIMATION_SLIDE_TOP",
+                    "speed":"1800",
+                    "method":"0",
+                    "sequence":"1"
+
+                    }
+                },
+                {
+                    "values":[300,350,280,350,190,270,240,330,170],
+                    "text":"Documentation",
+                    "line-color":"#00BAF0",
+                    "line-width":4,
+                    "background-color":"#016b8b #00BAF0",
+                    "marker":{
+                        "background-color":"#016b8b",
+                        "border-width":1,
+                        "shadow":0,
+                        "border-color":"#7ddef4"
+                    },
+                    "legend-marker":{
+                        "type":"circle",
+                        "size":6,
+                        "shadow":0,
+                        "border-width":1,
+                        "background-color":"#016b8b",
+                        "border-color":"#7ddef4"
+                        },
+                         "animation":{
+                    "delay":500,
+                    "effect":"ANIMATION_SLIDE_TOP",
+                    "speed":"1800",
+                    "method":"0",
+                    "sequence":"1"
+
+                    }
+                },
+                {
+                    "values":[220,190,140,240,180,260,190,210,270],
+                    "text":"Support Inquiries",
+                    "line-color":"#9dc644",
+                    "line-width":4,
+                    "background-color":"#5d7f13 #7ca82b",
+                    "marker":{
+                        "background-color":"#5d7f13",
+                        "border-width":1,
+                        "shadow":0,
+                        "border-color":"#c9e286"
+                    },
+                    "legend-marker":{
+                        "type":"circle",
+                        "size":6,
+                        "shadow":0,
+                        "border-width":1,
+                        "background-color":"#5d7f13",
+                        "border-color":"#c9e286"
+                        },
+                         "animation":{
+                    "delay":500,
+                    "effect":"ANIMATION_SLIDE_TOP",
+                    "speed":"1800",
+                    "method":"0",
+                    "sequence":"1"
+
+                    }
+                }
+            ]
+        },
+                                output : "svg",
+                                defaults: {
+                                    "root":{
+                                        "gui":{
+                                            "behaviors":[ 
+                                                {"id":"SaveAsImage", "enabled":"none" },
+                                                {"id":"Print", "enabled":"none" },
+                                                {"id":"ViewSource", "enabled":"none" },
+                                                {"id":"BugReport","enabled":"all"},
+                                                {"id":"FullScreen","enabled":"none"},
+                                                {"id":"ZoomIn","enabled":"none"},
+                                                {"id":"ZoomOut","enabled":"none"},
+                                                {"id":"ViewAll","enabled":"none"},
+                                                {"id":"LogScale","enabled":"none"},
+                                                {"id":"DownloadPDF","enabled":"none"},
+                                                {"id":"3D","enabled":"none"},
+                                                {"id":"HideGuide","enabled":"none"}
+                                            ],
+                                            "context-menu":{
+                                               "button":{ "visible":"false" },
+                                               "gear":{ "visible":"false" }
+                                            } 
+                                        }
+                                    }
+                                }
+                            });
+                        }, 1000);
+                     //forEach
+                
+                }  
+            }
+            
+            renderBannerCharts(); 
+        
+                        var resizeTimout;
+            $(window).resize( function() {
+                clearTimeout( resizeTimout );
+                resizeTimout = setTimeout( doneResizing, 500 );
+            }); 
+            
+        
+                        function doneResizing() {
+                renderBannerCharts();
+            }   
+            
+        });
+        </script>
+        
+    </div>
+    
+    <div data-zc-wrap>
+        
+        <div data-zc-inner>
+            
+                        <!--[if lte IE 9]>
+                <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/?locale=en" target="_blank">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+        
+            
+                    <p>Build interactive HTML5 charts using our JavaScript charting library and feature-rich API set. Render them in any browser and on any device. Export them quickly and easily. Conquer your data visualization challenges.</p>
+        
+        <div id="highlight" data-zc-highlight data-zc-row>
+        <!--Removed links while work continues on multi render section-->
+            <div data-zc-col>
+                <a href="javascript: void(0)" class="mob_dis" style="cursor:default;">
+                    <span id="h-flex" data-icon="fixed" data-zc-animate="zoom">Flex</span> 
+                    <strong>Ultimate Flexibility</strong> 
+                    <span>Design your own chart themes or use ours, across a wealth of chart types and features.</span>
+                </a>
+            </div>
+        
+        
+            <div data-zc-col>
+                <a href="javascript: void(0)" class="mob_dis" style="cursor:default;">
+                    <span id="h-multi" data-icon="fixed" data-zc-animate="zoom">Multi</span> 
+                    <strong>Multiple Renders</strong> 
+                    <span>Our charting library renders in HTML5 (canvas),<br>SVG, and Image<br>(VML and Flash too).</span>
+                </a>
+            </div>
+        
+        
+            <div data-zc-col>
+                <a href="javascript: void(0)" class="mob_dis" style="cursor:default;">
+                    <span id="h-fast" data-icon="fixed" data-zc-animate="zoom">Fast</span> 
+                    <strong>It's Super Fast!</strong> 
+                    <span>Built by JavaScript experts, our modular library is feature-rich, yet lean and innovative.</span>
+                </a>
+            </div>
+        
+        
+            <div data-zc-col>
+                <a href="javascript: void(0)" class="mob_dis" style="cursor:default;">
+                    <span id="h-live" data-icon="fixed" data-zc-animate="zoom">Live</span> 
+                    <strong>Supports Live Data</strong> 
+                    <span>Need real time? No problem!<br>Push and pull your data through our web sockets.</span>
+                </a>    
+            </div>
+            
+        </div>
+        <!-- old ultimate flexibility spot -->
+
+    <hr>
+
+    <p style="margin-bottom:30px;"><a href="#speedtest" style="color:#505050 !important; cursor:default !important;">Want fast web charts? ZingChart blazes!</a> We've architected the library with modular design. This offers the most features and flexibility, while still exceeding performance expectations (especially when the number of data points gets big). Can your charting library do that?</p>
+        
+        <div data-zc-row>
+        
+            <div data-zc-col data-zc-data-points>
+                
+                <div id="data-points-dropdown-container">
+                    <select id="speed-test-dropdown" class="no-search">
+                        <option value="500" selected>500 Data Points</option>
+                        <option value="1000">1000 Data Points</option>
+                        <option value="2500">2500 Data Points</option>
+                        <option value="5000">5000 Data Points</option>
+                        <option value="10000">10000 Data Points</option>
+                    </select>
+                </div>
+                
+                <h2 class="alt" id="time-to-render">Test</h2>
+                
+            </div>
+            
+        </div>
+
+
+        <div data-zc-row>
+            
+            <div data-zc-col>
+                
+                <div id="speed-test" data-zc-offset>
+                    <div id="chart_19167" class="loading"></div>
+                    <div id="speed-test-placeholder">
+                        <button class="btn-primary" id="run-speed-test">run speed test</button>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        
+        <!-- <hr> -->
+
+
+<script>
+
+ZINGCHART.addOnStartFn( function() {
+    var ZingSpeedTest = {
+    
+        _TS_ : null,
+    
+        dataset : function(plots, nodes) {
+            var series = [], values, m1, m2, v, s, 
+                linecolor = ['#7ca82b','#cc3300','#045169','#6160AB','#565F66'];
+            
+            for (var p=0;p<plots;p++) {
+                values = [];
+                m1 = 10+40*Math.random();
+                m2 = 10+40*Math.random();
+                s = 40+160*Math.random();
+                for (var n=0;n<nodes+1;n++) {
+                    v = s*Math.exp(Math.abs(n-nodes/2)/nodes)*Math.sin(n/(nodes/(m1)))*Math.cos(n/(nodes/m2));
+                    v = parseFloat(v.toFixed(2));
+                    values.push(v)
+                }
+                series.push({
+                    'values' : values,
+                    'line-color' : linecolor[p],
+                    'line-width' : 1
+                });
+            }
+            return series;
+        },
+    
+        showDuration : function(datapoints) {
+                        $('#time-to-render').show().html('You are viewing ' + datapoints + ' data points that rendered in ' + (ZingSpeedTest._TS_ / 1000) + ' seconds');
+        },
+    
+        render : function(plots, nodes, showSpeedText) {
+
+            window.resetZoom = function(chart) {
+                zingchart.exec(chart.id, 'viewall');
+            }
+
+                        var chartWidth = $('#chart_19167').width()
+              , showSpeedText = ( showSpeedText == false ) ? false : true; // if false passed in, don't show speed text ( default is true )
+            
+            ZingSpeedTest._TS_ = new Date().getTime();
+            zingchart.DEV.SORTTOKENS = 0;
+            zingchart.DEV.PLOTSTATS = 0;
+            zingchart.render({
+                id : 'chart_19167', 
+                width : chartWidth,
+                height : 320,
+                output : 'svg',
+                events : {
+                    complete : function() {
+                        ZingSpeedTest._TS_ = new Date().getTime() - ZingSpeedTest._TS_;
+                                                if ( showSpeedText ) {
+                            ZingSpeedTest.showDuration(plots * nodes);
+                            speedTestInitiated = true;
+                            $('#time-to-render').fadeIn();
+                        }
+                    }
+                },
+                data : { 
+                    "gui":{
+                        "behaviors":[
+                            {
+                                "id":"Reload",
+                                "enabled":"none"
+                            },
+                            {
+                                "id" : "SaveAsImage",
+                                "enabled" : "none"
+                            },
+                            {
+                                "id" : "Print",
+                                "enabled" : "none"
+                            },
+                            {
+                                "id" : "ViewSource",
+                                "enabled" : "none"
+                            },
+                            {
+                                "id" : "BugReport",
+                                "enabled" : "none"
+                            },
+                            {
+                                "id" : "FullScreen",
+                                "enabled" : "none"
+                            },
+                            {
+                                "id" : "ZoomIn",
+                                "enabled" : "all"
+                            },
+                            {
+                                "id" : "ZoomOut",
+                                "enabled" : "none"
+                            },
+                            {
+                                "id" : "ViewAll",
+                                "enabled" : "none"
+                            },
+                            {
+                                "id" : "LogScale",
+                                "enabled" : "none"
+                            },
+                            {
+                                "id":"DownloadPDF",
+                                "enabled":"none"
+                            },
+                            {
+                                "id" : "3D",
+                                "enabled" : "none"
+                            },
+                            {
+                                "id":"HideGuide",
+                                "enabled":"none"
+                            }
+                        ],
+                        "context-menu":{
+                            "button":{
+                               "visible":0
+                            },
+                            "gear":{
+                               "visible":0
+                            },
+                            "custom-items":[{
+                                "text":"Reset Zoom",
+                                "function":"resetZoom(this)",
+                                "id":"reset-zoom"
+                            }]
+                        }
+                    },
+                    "graphset": [{
+                        "type":"line",
+                        "background-color":"#f4f4f4",
+                        "plot":{
+                            "mode":"fast",
+                            "exact":true,
+                            "smartSampling":true,
+                            "maxNodes":0,
+                            "maxTrackers":0,
+                            "lineWidth":2,
+                            "shadow":false,
+                            "marker":{
+                                "type":"none",
+                                "shadow":false
+                            }
+                        },
+                        "plotarea":{
+                            "background-color":"#fbfbfb",
+                            "margin-top":"30px",
+                            "margin-bottom":"40px",
+                            "margin-left":"50px",
+                            "margin-right":"30px"
+                        },
+                        "scaleX":{
+                            "autoFit":true,
+                            "zooming":true,
+                            "normalize":true,
+                            "lineWidth":1,
+                            "line-color":"#c7c9c9",
+                            "tick":{
+                                "lineWidth":1,
+                                "line-color":"#c7c9c9"
+                            },
+                            "guide":{
+                                "visible":false
+                            },
+                            "item":{
+                                "font-color":"#818181",
+                                "font-family":"Arial",
+                                "padding-top":"5px"
+                            },
+                            "maxLabels":10
+                        },
+                        "scrollX":{
+                            
+                        },
+                        "scaleY":{
+                            "minValue":"auto",
+                            "autoFit":true,
+                            "lineWidth":1,
+                            "line-color":"#c7c9c9",
+                            "tick":{
+                                "lineWidth":1,
+                                "line-color":"#c7c9c9"
+                            },
+                            "item":{
+                                "font-color":"#818181",
+                                "font-family":"Arial",
+                                "padding-right":"5px"
+                            },
+                            "guide":{
+                                "lineStyle":"solid",
+                                "line-color":"#c7c9c9",
+                                "alpha":0.2
+                            }
+                        },
+                        "tooltip":{
+                            "visible":false
+                        },
+                        "crosshairX":{
+                            "lineWidth":1,
+                            "line-color":"#003849",
+                            "marker":{
+                                "size":4,
+                                "type":"circle",
+                                "borderColor":"#fff",
+                                "borderWidth":1
+                            },
+                            "scale-label":{
+                                "font-color":"#ffffff",
+                                "background-color":"#003849",
+                                "padding":"5px 10px 5px 10px",
+                                "border-radius":"5px"
+                            },
+                            "plotLabel":{
+                                "multiple":false,
+                                "callout":false,
+                                "shadow":false,
+                                "height":"115px",
+                                "padding":"5px 10px 5px 10px",
+                                "border-radius":"5px",
+                                "alpha":1,
+                                "headerText":"Node %scale-key-text<br>",
+                                "text":"<b>%plot-text:</b> %node-value"
+                            }
+                        },
+                        "series": ZingSpeedTest.dataset(plots, nodes) 
+                    }]
+                }
+            });
+        }
+    };
+
+    var currentDataPoints = 500;
+    var speedTestInitiated = false;
+
+    if (window.innerWidth >= 1024) {
+                $('#speed-test-placeholder').remove();
+        
+                var desktopDropdownHTML = 
+            '<select id="speed-test-dropdown">' +
+                '<option value="5000" selected>5000 Data Points</option>' +
+                '<option value="10000">10000 Data Points</option>' +
+                '<option value="25000">25000 Data Points</option>' +
+                '<option value="50000">50000 Data Points</option>' +
+                '<option value="100000">100000 Data Points</option>' +
+            '</select>';
+
+                $('#data-points-dropdown-container').empty().html( desktopDropdownHTML );
+
+                $('#speed-test-dropdown').select2( {minimumResultsForSearch:-1} );
+
+        currentDataPoints = 5000;
+        ZingSpeedTest.render(5, 1000, false);
+    } else {
+                $('#run-speed-test').click( function() {
+            $('#speed-test-placeholder').fadeOut('fast');
+            ZingSpeedTest.render(5, 100);
+        });
+
+        $('#speed-test-dropdown').one('change', function() {
+            $('#speed-test-placeholder').fadeOut('fast');
+        });
+        
+                $('.select2-input').attr('readonly', '');
+        
+        $('#speed-test-dropdown').on('select2-focus', function() {
+             $('input').blur();
+        });
+        $('#speed-test-dropdown').on('select2-selecting', function() {
+             $('input').blur();
+        });
+        $('#speed-test-dropdown').on('change', function() {
+             $('input').blur();
+        });
+    }
+
+        $('#speed-test-dropdown').on('change', function(e) {
+                var dataPointsPerPlot = Math.floor(e.val / 5);
+
+                ZingSpeedTest.render(5, dataPointsPerPlot);
+
+                currentDataPoints = e.val;
+    });
+
+        var resizeTimout;
+    $(window).resize( function() {
+        clearTimeout(resizeTimout);
+        resizeTimout = setTimeout(doneResizing, 500);
+    });
+
+        function doneResizing() {
+        if (speedTestInitiated) {
+            ZingSpeedTest.render( 5, Math.floor(currentDataPoints / 5) );
+        }
+    }
+
+    
+});
+</script>
+<!-- old want fast web charts goes here -->
+        <hr id="ultimate_flexibility">
+
+
+        <p>ZingChart offers the flexibility and resources to create stunning visualizations. We offer over 100 chart types to fit your data. Our unique features like zooming and interactive legends help your users get interactive. And our CSS-like styling allows you to creatively customize your charts.</p>
+        
+        <div id="h-flexibility" data-zc-row data-zc-offset>
+        
+                        
+            <div id="flexible_chart_6014" data-zc-col data-zc-animate="zoom"><a href="#" data-zc-overlayds="6014"><img src="http://www.zingchart.com/img/homepage-chart-total-sales.png" alt="Custom Dashboard" data-zc-retina></a></div>
+            <div id="flexible_chart_6015" data-zc-col data-zc-animate="zoom"><a href="#" data-zc-overlayds="6015"><img src="http://www.zingchart.com/img/homepage-chart-race-times.png" alt="Horizontal Bar Chart" data-zc-retina></a></div>
+            <div id="flexible_chart_6016" data-zc-col data-zc-animate="zoom"><a href="#" data-zc-overlayds="6016"><img src="http://www.zingchart.com/img/homepage-chart-bubbles.png" alt="Bubble Chart" data-zc-retina></a></div>
+            <!--<div id="flexible_chart_6016" data-zc-col data-zc-animate="zoom"><a href="/gallery/" data-zc-overlayds="6016"><img src="http://www.zingchart.com/img/homepage-chart-bubbles.png" alt="Bubble Chart" data-zc-retina></a></div>-->
+            
+        </div>
+        
+
+<script>
+
+    ZINGCHART.addOnStartFn( function() {
+        
+        $('[data-zc-overlayds]').on({
+            'click': function(e) {
+
+                e.preventDefault();
+
+                var queryParams = {
+                    chartOptions: {
+                        nodeId: $(this).attr('data-zc-overlayds')
+                    },
+                    overlay: true, 
+                    renderTo: "demo-chart",
+                    layout: "overlay-1col-callout"
+                }
+
+                ZINGCHART.charts.getCharts(queryParams);
+                        
+            }
+        });
+            
+    });
+
+</script>
+
+<hr />
+
+
+
+
+
+
+
+<p>Want to do dataviz like the big boys? ZingChart is used by companies from the Fortune 100 to brand new startups.</p>
+<p id="client-logos"><img src="http://www.zingchart.com/img/client-logos.png" alt="ZingChart Clients" data-zc-retina></p><div data-zc-row data-match="3" data-zc-offset>
+        
+            <div data-zc-col>
+                
+                <ul data-zc-testimonial style="list-style-type:none;">
+                
+                    <li>
+                        <div data-zc-quote data-zc-animate="zoom">
+                            <blockquote>We needed a charting solution that is fast, scalable, and looks good. ZingChart consistently exceeds our expectations with their product and support!</blockquote>
+                            <p>Dennis H. Norris / Director of Product Development<br>Conventus Corporation</p>
+                        </div>
+                    </li>
+                    
+                    <li>                        
+                        <div data-zc-quote data-zc-animate="zoom">
+                            <blockquote>ZingChart’s ability to do multiple renders for any device was key for us, especially for our energy efficiency product placed among Telefonica M2M services.</blockquote>
+                            <p>Pablo Cabezas Mateos<br>Telefonica</p>
+                        </div>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+        
+        
+            <div data-zc-col>
+                
+                <ul data-zc-testimonial style="list-style-type:none;">
+                    
+                    <li>
+                        <div data-zc-quote data-zc-animate="zoom">
+                            <blockquote>We now provide the most comprehensive and sophisticated financial charts in the industry and ZingChart helped us achieve that goal.</blockquote>
+                            <p>Richard Radnay / CTO/CIO<br>XTF, Inc.</p>
+                        </div>
+                    </li>
+                    
+                    <li>                        
+                        <div data-zc-quote data-zc-animate="zoom">
+                            <blockquote>At Alcatel, we wanted to render charts in many formats and be able to update charts on fly. Zingchart fulfilled these needs in a sweet, powerful, easy to use library.</blockquote>
+                            <p>Ngan Phan<br>Alcatel-Lucent USA</p>
+                        </div>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+            
+        </div>
+
+            <p data-zc-text="center">
+                <a id="home-download" href="/try/" data-zc-btn="1">Download a Free Trial</a> 
+                <a href="/buy/" data-zc-btn="1">See Our Pricing</a>
+            </p>
+
+            
+        </div>
+        
+    </div>
+        
+</div>
+
+
+<!-- About ZingChart -->
+<div data-zc-callout>
+    <div data-zc-inner>
+    
+        <div data-zc-row>
+        
+            <div data-zc-col>
+                
+                <h2>About ZingChart</h2>
+<p>ZingChart was born in 2008, during the development of a deep web analytics system. We needed to add standard charts to the mix, but existing Flash and &lt;canvas&gt; based graphing systems couldn't keep up. They kept buckling under the volume of data provided and lacked the required flexibility. One year later, ZingChart was released and it keeps growing in features, flexibility, and popularity.</p>
+<a class="arrow" href="/about-us/">Learn more about ZingChart</a>                
+            </div>
+        
+        
+            <div data-zc-col>
+                
+                <h2>ZingChart Blog</h2>
+                <ul class="list-calendar">
+                   <li>
+                        <a href="http://www.zingchart.com/blog/2014/08/12/business-intelligence-tools-minus-frills/" data-zc-single>
+                            <strong data-zc-animate="zoom"><span>Aug</span> <em>14</em></strong> 
+                            Business Intelligence Tools Minus the Frills
+                        </a>
+                   </li>
+                   <li>
+                        <a href="http://www.zingchart.com/blog/2014/06/10/2014-world-cup-interactive-chart/" data-zc-single>
+                            <strong data-zc-animate="zoom"><span>July</span> <em>14</em></strong> 
+                            The Humble Pie Chart in Data Visualization
+                        </a>
+                   </li>
+                   <li>
+                        <a href="http://www.zingchart.com/blog/2014/06/10/2014-world-cup-interactive-chart/" data-zc-single>
+                            <strong data-zc-animate="zoom"><span>June</span> <em>10</em></strong> 
+                            2014 World Cup Interactive Chart
+                        </a>
+                   </li>
+                </ul>
+
+                <a class="arrow" href="http://www.zingchart.com/blog">Visit the blog</a>
+
+<script>
+    ZINGCHART.addOnStartFn( function() {
+        mixpanel.track("Viewed Home Page");
+    });
+</script>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+
+
+<!-- Header -->
+<header role="banner">
+    <div data-zc-header data-zc-noshadow>
+        <div data-zc-inner data-zc-noshadow>
+            
+            
+            <nav role="navigation">
+                <p data-zc-nostyle>Site 'Primary' Navigation:</p>
+                <ul id="nav-primary" data-zc-nav>
+                    <li><a href="/features/" >Features</a></li>
+                    <li><a href="/gallery/" >Gallery</a></li>
+                    <li><a href="/docs/" >Docs</a></li>
+                    <li><a href="/try/" >Try</a></li>
+                    <li><a href="/buy/" >Buy</a></li>
+                </ul>
+            </nav>
+            <nav role="navigation">
+                <p data-zc-nostyle>Site 'Secondary' Navigation:</p>
+                <ul id="nav-secondary" data-zc-nav>
+					<li><a href="/dashboard.html#/client/53627de45f3971e202ffe41f/charts" >Login</a></li>
+                    <li><a href="/about-us/">About Us</a></li>
+                    <li><a href="/contact-us/">Contact Us</a></li>
+                    <li><a href="/support/">Support</a></li>
+                </ul>
+            </nav>
+                        
+        </div>
+    </div>
+</header>
+
+<!-- Footer -->
+<footer role="contentinfo">
+    <div data-zc-footer>
+        <div data-zc-inner>
+        
+            <ul id="social">
+                <li data-zc-animate="zoom" id="social_google"><a href="https://plus.google.com/118350261776566978582/posts" target="_blank" data-zc-icon-full="gplus">Google+</a></li>
+                <li data-zc-animate="zoom" id="social_linkedin"><a href="http://www.linkedin.com/company/zingchart" target="_blank" data-zc-icon-full="linkedin">LinkedIn</a></li>
+                <li data-zc-animate="zoom" id="social_facebook"><a href="https://www.facebook.com/zingchart/" target="_blank" data-zc-icon-full="facebook">Facebook</a></li>
+                <li data-zc-animate="zoom" id="social_twitter"><a href="https://twitter.com/ZingChart/" target="_blank" data-zc-icon-full="twitter">Twitter</a></li>
+            </ul>
+            
+            <p>&copy; Copyright 2009-2014 ZingChart</p>
+            
+            <nav role="navigation">
+                <p data-zc-nostyle>Site 'Footer' Navigation:</p>
+                <ul id="nav-footer" data-zc-nav>
+                    <li><a href="/legal/">Legal</a></li>
+                    <li><a href="/privacy/">Privacy</a></li>
+                </ul>
+            </nav>
+        
+        </div>
+    </div>
+</footer>
+
+<!-- Builder Tab -->
+<div data-zc-builder="tab">
+    <strong>ZingChart Builder</strong>
+    <div>
+        <p data-zc-builder="intro">Looking for the Builder?<br><a href="http://www.zingchart.com/builder" target="_blank">It's still here!</a></p>
+        <p>Things are changing in 2014! Sign up to be the first to know.</p>
+        <span id="invalid-email" style="color:#C30;">&nbsp;</span>
+        <form id="form-builder-signup" action="/">
+            <input type="text" name="field_email" placeholder="Enter email address...">
+            <button type="submit" name="submit" data-zc-btn="4">Submit</button>
+        </form>
+    </div>
+</div>
+<script>
+ZINGCHART.addOnStartFn( function() { 
+
+    $('#form-builder-signup').ZC_formSubmit({
+        moduleId: 19407,
+        success: '<p class="success">Thank you. Stay tuned.</p>'
+    });
+
+});
+</script>
+
+<!-- Overlay -->
+<div data-zc-overlay-boxDS>
+
+    <div data-zc-row="overlay-title"></div>
+
+    <div data-zc-row="overlay-main" id="overlay-main">
+
+        <div data-zc-col="chart">
+
+            <div data-inline>
+                <span data-zc-overlay-prev data-zc-btn="4" id="featured-prev">&laquo; Prev</span>
+                <span data-zc-overlay-next data-zc-btn="4" id="featured-next">Next &raquo;</span>
+            </div>
+            <span id="chart-view" data-zc-toggle="source" data-zc-active>Chart View</span>
+            <span id="code-view" data-zc-toggle="source">Code View</span>
+            <span id="chart-nodeID"></span>
+
+            <!--<h2 id="chart-title">{{ Title }}</h2>-->
+            
+            <div id="chart-container" class="loading" style="width:100%;">
+                <div id="demo-chart" class="slide"></div>
+            </div>
+
+        </div>
+
+
+        <div data-zc-col="share">
+
+            <div data-inline>
+                <span id="customize-chart" data-zc-btn="7"><span class="fa fa-pencil"></span> Edit This Chart</span>
+                <span id="share-chart" data-zc-btn="7"><span class="fa fa-share-alt"></span> Share This Chart</span>
+                <a id="try-zing" href="/try/" data-zc-btn="1">Start a FREE Trial</a>
+            </div>
+
+        </div>
+        
+
+        <div data-zc-col="code">
+            <span id="js-view" data-zc-toggle="js">JS</span>
+            <span id="json-view" data-zc-toggle="json" data-zc-active>JSON</span>
+            <div id="code-container">
+                <div class="scroll">
+                    <div id="code-json">
+                        <pre class="prettyprint"></pre>
+                    </div>
+
+                    <div id="code-js" style="display:none;">
+                        <pre class="prettyprint"></pre>
+                    </div>
+                </div>
+            </div>
+            <div id="demo-buttons"></div>
+        </div>
+
+    </div>
+
+    <div data-zc-row="overlay-console">
+        <div class="scroll">
+            <pre></pre>
+        </div>
+    </div>
+
+    <div data-zc-overlay-closeDS></div>
+
+</div>
+<div data-zc-overlay-maskDS>&nbsp;</div>
+
+
+<script>
+ZINGCHART.addOnStartFn( function() {
+    // Check for query string info; if valid info found, launch specified chart/demo in overlay
+    ZINGCHART.charts.setChartFromURL();
+});
+</script>
+
+<!-- Scripts (min) -->
+<!-- <script src="/scripts/lib.min.js?v=1"></script> -->
+
+<!-- Scripts ( to combine ) -->
+<script src="http://www.zingchart.com/scripts/respond.min.js"></script>
+<script src="http://www.zingchart.com/scripts/jquery.min.js"></script>
+<script src="http://www.zingchart.com/scripts/jquery.ui.custom.min.js"></script>
+<script src="http://www.zingchart.com/scripts/zingchart/html5_scripts/zingchart-html5-min.js"></script>
+
+<!--[if (!IE)|(gt IE 8)]>
+<script src="http://www.zingchart.com/scripts/list.min.js"></script>
+<script src="http://www.zingchart.com/scripts/list.pagination.min.js"></script>
+<![endif]-->
+
+<script src="http://www.zingchart.com/scripts/select2.min.js"></script>
+
+<script src="http://www.zingchart.com/scripts/common.js"></script>
+
+
+<script>ZC.LICENSE = ['569d52cefae586f634c54f86dc99e6a9','ee6b7db5b51705a13dc2339db3edaf6d'];</script>
+<script>zingchart.MODULESDIR='http://www.zingchart.com/scripts/zingchart/html5_scripts/modules/';</script>
+<script>zingchart.loadModules('api,debug,tooltip,objects,export,csv,selection');</script>
+
+
+
+
+<script>
+    try {
+        // Create LINK/SCRIPT
+        // Code added via CBLOCK to be run on ready
+        // Usage: ZINGCHART.requireCss('/css/xxxx.css');
+        // Usage: ZINGCHART.requireJs('/scripts/xxxx.js');
+        if( ZINGCHART.requireCssFiles ) { var loaded = []; $.each(ZINGCHART.requireCssFiles, function(index, file) { if( $.inArray(file, loaded) == -1 ) { $('head').append('<link href="' + file + '" rel="stylesheet" media="all">'); loaded.push(file); } }); }
+        if( ZINGCHART.requireJsFiles ) { var loaded = []; $.each(ZINGCHART.requireJsFiles, function(index, file) { if( $.inArray(file, loaded) == -1 ) { $('body').append('<script src="' + file + '"/>'); loaded.push(file); } }); }
+            
+        // Code Execution/Functions
+        // Code added via CBLOCK to be run on ready
+        // Usage: ZINGCHART.addOnStartFn( function() { $('xxxx').hide() });
+        if ( ZINGCHART.onStartFns ) { $.each(ZINGCHART.onStartFns, function(index, fn) { fn(); }); }
+    }
+    catch(e) {
+        console.log("Error: Shared: End Items, issue w/ addOnStart function or with ZINGCHART object");
+        console.log(e);
+        //trackJs.track('Shared: End Items, issue w/ addOnStart function or with ZINGCHART object');
+    }
+</script>
+</body>
+</html>

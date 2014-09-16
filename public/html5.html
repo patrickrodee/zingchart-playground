@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-language" content="en">
+	<script type="text/javascript" src="/client/js/jquery-1.4.4.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.ajax({
+            url: '/chart/535ac7ba44d59/render',
+            data: {
+                output:"html5"
+            },
+            dataType: "script"
+        });
+    });
+</script>
+Hello H5 World
+</body>
+</html>

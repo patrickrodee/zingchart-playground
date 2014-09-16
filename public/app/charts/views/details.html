@@ -1,0 +1,29 @@
+<material-dialog style="width:800px;height:550px;">
+	<material-toolbar class="material-theme-dark">
+		<div class="material-toolbar-tools">
+			<span class="material-flex">Chart Form</span>
+		</div>
+	</material-toolbar>
+	<div class="dialog-content" style="height:250px;">
+		<form name="chartForm">    
+
+
+			<material-input-group class="material-input-group-theme-zing">
+				<label for="chartName">Chart Name</label>
+				<material-input id="chartName" name="chartName" type="text" ng-model="chart.name">
+				</material-input-group>
+				<material-input-group class="material-input-group-theme-zing">
+					<label for="chartKeywords">Keywords</label>
+					<material-input type="text" id="chartKeywords" ng-model="chart.keywords">
+					</material-input-group>
+
+				</form>
+
+			</div>
+			<div class="dialog-actions" layout="horizontal" layout-align="end">
+				<material-button ng-click="save()" ng-show="chart._id"><i class="icon-white glyphicon glyphicon-plus"></i> Save</material-button>
+				<material-button ng-click="add()" type="submit" ng-show="!chart._id"> Add</material-button>
+				<material-button ng-click="cancel()" >Cancel</material-button>
+			</div>
+		</material-dialog>
+

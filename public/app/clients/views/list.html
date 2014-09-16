@@ -1,0 +1,31 @@
+
+  <h2>Clients</h2>
+  <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+  <!--<input type="text" ng-model="search" class="search-query pull-left" placeholder="Search">-->
+    
+  <div ui-grid="gridOptions" class="grid" id="clientGrid"></div>  
+    <!--
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Client</th>
+        <th>Created</th>
+        <th>Key</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="client in clients | filter:search | orderBy:'name'">
+        <td><a ng-href="#/client/{{client._id}}">{{client.name}}</a></td>
+        <td>{{client.created | date}}</td>
+        <td>{{client.key}}</td>
+        <td>
+          <a class="btn btn-primary btn-xs" ng-click="open(client)"><i class="icon-white glyphicon glyphicon-pencil"></i> Edit</a>
+          <a class="btn btn-danger btn-xs" ng-click="remove(client._id)"><i class="icon-white glyphicon glyphicon-remove"></i> Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>-->
+  <br>
+  <a class="material-button material-button-colored" ng-click="open()">Add New Client</a>
+  
+    

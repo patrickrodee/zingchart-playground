@@ -1,0 +1,88 @@
+<!-- index.html -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="zingClient">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>ZingChart API Management</title>
+	<script src="/lib/material/bower_components/jquery/dist/jquery.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.js"></script><!-- load angular -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular-resource.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular-animate.min.js"></script>
+	<script src="/lib/material/config/lib/angular-animate-sequence/angular-animate-sequence.js"></script>
+	<script src="/lib/material/config/lib/angular-animate-sequence/angular-animate-stylers.js"></script>
+	<script src="/lib/material/dist/material-design.js"></script>
+	<script src="/lib/ng-grid/dist/release/ui-grid.js"></script>
+	
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="/lib/material/dist/material-design.css" >
+	<link rel="stylesheet" href="/lib/ng-grid/dist/release/ui-grid.css">
+	<style>
+		html 					{ overflow-y:scroll; }
+		#client-list 				{ margin-bottom:30px; }
+		.grid {
+			height:300px;
+		  }
+		  
+		  .material-input-group-theme-zing input {
+			border-color: #757575;
+		  }
+		  
+		  .material-input-group-theme-zing input[type="text"],input[type="email"]{
+			width:350px;
+		  }
+		  
+		  .material-input-group-theme-zing label {
+			color: #757575;
+			font-size:14px;
+		  }
+		  
+		  .material-input-group-theme-zing.material-input-focused input {
+			border-color: #3f51b5;
+		  }
+		  
+		  .material-input-group-theme-zing.material-input-focused label {
+			color: #3f51b5;
+		  }
+		  
+		  .tabs-content{
+			padding-left:20px;
+			padding-right:20px;
+			padding-bottom:20px;
+		  }
+		  
+		  
+	</style>
+
+	
+</head>
+<body layout="vertical" layout-fill class="layout-demo full-layout-demo">
+	<div ng-include="'app/views/topnav.html'"></div>
+	<div ui-view style="height:100%" flex layout="vertical" layout-sm="horizontal"></div>
+		
+		
+		
+	<script src="/js/angular-ui-router.js"></script>
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+	<script src="app/app.js"></script>
+	<script src="app/admin/admin_controller.js"></script>
+	<script src="app/admin/admin_directive.js"></script>
+	<script src="app/clients/clients_controller.js"></script>
+	<script src="app/clients/clients_service.js"></script>
+	<script src="app/clients/clients_directive.js"></script>
+	<script src="app/users/users_controller.js"></script>
+	<script src="app/users/users_directive.js"></script>
+	<script src="app/users/users_service.js"></script>
+	<script src="app/groups/groups_controller.js"></script>
+	<script src="app/groups/groups_directive.js"></script>
+	<script src="app/groups/groups_service.js"></script>
+	<script src="app/charts/charts_controller.js"></script>
+	<script src="app/charts/charts_directive.js"></script>
+	<script src="app/charts/charts_service.js"></script>
+</body>
+</html>

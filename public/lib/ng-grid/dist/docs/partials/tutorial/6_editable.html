@@ -1,0 +1,89 @@
+<h1><code ng:non-bindable=""></code>
+<span class="hint"></span>
+</h1>
+<div><p>You can use the <code>enableCellEdit</code> options in your column definitions to allow a column to be editable.</p>
+
+<p>Editing is invoked via double-click, f2, or start typing any non-navigable key. Custom edit templates should be used for any editor
+other than the default editors. By default a text editor is provided for all non-boolean fields, for booleans a boolean editor with
+a checkbox is provided.</p>
+
+<p>ColumnDef Options:
+<br/><code>editableCellTemplate</code> (default: 'ui-grid/cellTextEditor' for non-boolean columns, 'ui-grid/cellBooleanEditor' for
+boolean columns) - Valid html, templateCache Id,  or url that returns html content to be compiled when edit mode is invoked.
+<br/><code>enableCellEdit</code> (default: true) - false to not allow editing
+<br/><code>cellEditableCondition</code>  (default: true)  Can be set to a boolean or a function that will be called with the cellScope to determine if the cell should be invoked in edit mode.
+<br/><code>type</code> (default: null) If set to boolean the default editor provided for editing will be boolean editor.
+<br/>
+The following option is available only if using cellNav feature
+<br/><code>enableCellEditOnFocus</code> - true to invoke editor as soon as cell has focus</p>
+
+<pre class="prettyprint linenums">
+$scope.gridOptions.columnDefs = [
+   { name: 'name', enableCellEdit: true, editableCellTemplate },
+   { name: 'address.city', enableCellEdit: true, displayName: 'Address (even rows editable)', cellEditableCondition: function($scope){return $scope.row.index%2} },
+   { name: 'isActive', enableCellEdit: true, type: 'boolean'}
+]
+</pre><h2 id="Example">Example</h2>
+<div class="example"><h4>Source</h4>
+<div source-edit="app" source-edit-deps="angular.js app.js" source-edit-html="index.html-28" source-edit-css="main.css" source-edit-js="app.js" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html-28" ng-html-wrap-loaded="app angular.js app.js"></pre>
+<script type="text/ng-template" id="index.html-28">
+  <div ng-controller="MainCtrl">
+    <strong>Data Length:</strong> {{ gridOptions.data.length | number }}
+    <br>
+    <strong>Last Cell Edited:</strong> {{msg.lastCellEdited}}
+    <br>
+    <div ui-grid="gridOptions" ui-grid-edit class="grid"></div>
+  </div>
+</script>
+</div>
+<div class="tab-pane" title="main.css">
+<pre class="prettyprint linenums" ng-set-text="main.css"></pre>
+<style type="text/css" id="main.css">
+  .grid {
+    width: 600px;
+    height: 450px;
+  }
+</style>
+</div>
+<div class="tab-pane" title="app.js">
+<pre class="prettyprint linenums" ng-set-text="app.js"></pre>
+<script type="text/ng-template" id="app.js">
+  var app = angular.module('app', ['ui.grid', 'ui.grid.edit']);
+
+  app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
+    $scope.gridOptions = {  };
+
+    $scope.gridOptions.columnDefs = [
+      { name: 'id', enableCellEdit: false },
+      { name: 'name', displayName: 'Name (editable)' },
+      { name: 'age', enableCellEdit: false},
+      { name: 'address.city', displayName: 'Address (even rows editable)',
+           cellEditableCondition: function($scope){return $scope.row.index%2} },
+      { name: 'isActive', displayName: 'Active', type: 'boolean'}
+    ];
+
+
+
+   $scope.msg = {};
+
+   $scope.gridOptions.onRegisterApi = function(gridApi){
+            //set gridApi on scope
+            $scope.gridApi = gridApi;
+            gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
+              $scope.msg.lastCellEdited = 'edited row id:' + rowEntity.id + ' Column:' + colDef.name + ' newValue:' + newValue + ' oldValue:' + oldValue ;
+              $scope.$apply();
+            });
+          };
+
+    $http.get('/data/500_complex.json')
+      .success(function(data) {
+        $scope.gridOptions.data = data;
+      });
+  }]);
+</script>
+</div>
+</div><h4>Demo</h4>
+<div class="well doc-example-live animator-container" ng-embed-app="app" ng-set-html="index.html-28" ng-eval-javascript="app.js"></div></div>
+</div>

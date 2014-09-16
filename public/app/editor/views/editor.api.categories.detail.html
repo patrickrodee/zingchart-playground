@@ -1,0 +1,19 @@
+<div class="api-header"><strong class="colored-title">JSON Attributes/Syntax > {{
+		category.name}}</strong></div>
+
+<ul class="list-group">
+	<li class="list-group-item" ng-repeat="object in objects ">
+	<div  ui-sref="editor.ide.api.attributes( {catId: '{{category.id}}', objName:
+		{{object}}})">
+
+		<div class="row">
+			<div class="col-md-3"><h5>{{object.name}}</h5></div> 
+			<div class="col-md-1"></div>
+				<div class="col-md-8">
+					<small>{{object.desc}} </small>
+				</div> 
+			</div>
+		</div>
+
+		</li>
+	</ul><br>

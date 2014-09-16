@@ -1,0 +1,91 @@
+<material-dialog style="width:800px;height:550px;">
+   <material-toolbar class="material-theme-dark">
+        <div class="material-toolbar-tools">
+          <span class="material-flex">Client Form</span>
+        </div>
+    </material-toolbar>
+  <div class="dialog-content" style="height:550px;">
+        <form name="userForm">    
+        
+        <div style="border:1px solid #3f51b5;">
+        <material-tabs selected="selectedIndex">
+                <material-tab label="General"></material-tab>
+                <material-tab label="Access Limits"></material-tab>
+        </material-tabs>
+        
+        <div  ng-switch on="selectedIndex" class="tabs-content">
+                <div ng-switch-when="0">
+                    
+                        <div class="material-input-group-theme-zing material-input-group">
+                          <label for="name">Client Name</label>
+                          <input id="name" type="text" ng-model="client.name" >
+                        </div>
+                  
+                        <div class="material-input-group-theme-zing material-input-group">
+                          <label for="clientEmail">Email address</label>
+                          <input type="email" id="clientEmail" ng-model="client.email">
+                        </div>
+                        <br>
+                        <fieldset>
+                        <legend>Allowed IPs or Domains <a ng-click="addIp()" class="btn-link">Add</a></legend> 
+                          <div ng-repeat="ip in client.ips" class="material-input-group-theme-zing material-input-group" layout="horizontal">
+                            <input type="text" ng-model="ip.value"><span ng-click="removeIp($index)" class="input-group-addon">Remove</span>
+                          </div>
+                        <!--  -->
+                        </fieldset>
+                </div>
+                <div  ng-switch-when="1">
+                    <p>
+                        <fieldset ng-repeat="(key, method) in client.usage.allowed">
+        
+                            <!-- Form Name -->
+                            <legend>{{key | uppercase}}</legend>
+                            
+                            
+                            <!-- Text input-->
+                            <div layout="horizontal">
+                                <div flex="30">
+                                        <div class="material-input-group-theme-zing material-input-group">
+                                          <label for="{{key}}day">Day</label>
+                                          <input id="{{key}}day" type="number" ng-model="method.day">
+                                        </div>
+                                </div>
+                                <div flex="30">
+                                        <div class="material-input-group-theme-zing material-input-group">
+                                          <label for="{{key}}week">Week</label>
+                                          <input id="{{key}}week" type="number" ng-model="method.week">
+                                        </div>
+                                </div>
+                            </div>
+                            
+                            <div layout="horizontal">
+                                <div flex="30">
+                                        <div class="material-input-group-theme-zing material-input-group">
+                                          <label for="{{key}}month">Month</label>
+                                          <input id="{{key}}month" type="number" ng-model="method.month">
+                                        </div>
+                                </div>
+                                <div flex>
+                                        <div class="material-input-group-theme-zing material-input-group">
+                                          <label for="{{key}}total">Total</label>
+                                          <input id="{{key}}total" type="number" ng-model="method.total">
+                                        </div>
+                                </div>
+                            </div>
+                            
+                            </fieldset>
+                      </p>
+                </div>
+        </div>
+        
+        </div>
+            
+        </form>
+  </div>
+        <div class="dialog-actions" layout="horizontal" layout-align="end">
+                <button ng-click="save()" ng-show="client._id" ng-disabled="client.$invalid" class="material-button"><i class="icon-white glyphicon glyphicon-plus"></i> Save</button>
+                <button ng-click="add()" type="submit" ng-show="!client._id" ng-disabled="client.$invalid" class="material-button"> Add</button>
+                <button ng-click="cancel()" class="material-button">Cancel</button>
+          </div>
+</material-dialog>
+      

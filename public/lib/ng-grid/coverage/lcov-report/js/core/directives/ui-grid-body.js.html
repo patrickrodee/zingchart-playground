@@ -1,0 +1,1906 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for js/core/directives/ui-grid-body.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../../../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("https://yui-s.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">js/core/directives/ui-grid-body.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">1.9% <small>(5 / 263)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 128)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">3.57% <small>(1 / 28)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">1.96% <small>(5 / 255)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">js/core/directives/</a> &#187; ui-grid-body.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function(){
+  'use strict';
+&nbsp;
+  angular.module('ui.grid').directive('uiGridBody', ['$log', '$document', '$timeout', 'uiGridConstants', 'gridUtil',
+<span class="fstat-no" title="function not covered" >    function($log, $document, $timeout, uiGridConstants, GridUtil) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+      replace: true,
+      transclude: true,
+      // priority: 1000,
+      templateUrl: 'ui-grid/ui-grid-body',
+      require: '?^uiGrid',
+      scope: false,
+      link: <span class="fstat-no" title="function not covered" >function($scope, $elm, $attrs, uiGridCtrl) {</span>
+<span class="cstat-no" title="statement not covered" >        if (uiGridCtrl === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >          throw new Error('[ui-grid-body] uiGridCtrl is undefined!');</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $log.debug('ui-grid-body link');</span>
+&nbsp;
+        // Disable animations on the grid body so ngAnimate, if present, doesn't ruin performance by toggling classes on all the elements
+<span class="cstat-no" title="statement not covered" >        GridUtil.disableAnimations($elm);</span>
+&nbsp;
+        // Store the body in the controller
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.body = $elm;</span>
+&nbsp;
+        // Stick the canvas in the controller
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.canvas = angular.element( $elm[0].getElementsByClassName('ui-grid-canvas')[0] );</span>
+        // uiGridCtrl.viewport = elm; //angular.element( elm[0].getElementsByClassName('ui-grid-viewport')[0] );
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.viewport = angular.element( $elm[0].getElementsByClassName('ui-grid-viewport')[0] );</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.viewportOuterHeight = GridUtil.outerElementHeight(uiGridCtrl.viewport[0]);</span>
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.viewportOuterWidth = GridUtil.outerElementWidth(uiGridCtrl.viewport[0]);</span>
+&nbsp;
+        // Explicitly set the viewport scrollTop to 0; Firefox apparently caches it
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.viewport[0].scrollTop = 0;</span>
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.viewport[0].scrollLeft = 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.prevScrollTop = 0;</span>
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.prevScrolltopPercentage = 0;</span>
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.prevScrollLeft = 0;</span>
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.prevRowScrollIndex = 0;</span>
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.prevColumnScrollIndex = 0;</span>
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.currentTopRow = 0;</span>
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.currentFirstColumn = 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.adjustScrollVertical = <span class="fstat-no" title="function not covered" >function (scrollTop, scrollPercentage, force) {</span></span>
+<span class="cstat-no" title="statement not covered" >          if (uiGridCtrl.prevScrollTop === scrollTop &amp;&amp; !force) {</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          scrollTop = uiGridCtrl.grid.getCanvasHeight() * scrollPercentage;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.adjustRows(scrollTop, scrollPercentage);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.prevScrollTop = scrollTop;</span>
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.prevScrolltopPercentage = scrollPercentage;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          $scope.grid.refreshCanvas();</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.adjustRows = <span class="fstat-no" title="function not covered" >function(scrollTop, scrollPercentage) {</span></span>
+<span class="cstat-no" title="statement not covered" >          var minRows = uiGridCtrl.grid.minRowsToRender();</span>
+          // var maxRowIndex = uiGridCtrl.grid.visibleRowCache.length - minRows;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          var rowCache = uiGridCtrl.grid.renderContainers.body.visibleRowCache;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          var maxRowIndex = rowCache.length - minRows;</span>
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.maxRowIndex = maxRowIndex;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          var curRowIndex = uiGridCtrl.prevRowScrollIndex;</span>
+&nbsp;
+          // Calculate the scroll percentage according to the scrollTop location, if no percentage was provided
+<span class="cstat-no" title="statement not covered" >          if ((typeof(scrollPercentage) === 'undefined' || scrollPercentage === null) &amp;&amp; scrollTop) {</span>
+<span class="cstat-no" title="statement not covered" >            scrollPercentage = scrollTop / uiGridCtrl.grid.getCanvasHeight();</span>
+          }
+          
+<span class="cstat-no" title="statement not covered" >          var rowIndex = Math.ceil(Math.min(maxRowIndex, maxRowIndex * scrollPercentage));</span>
+&nbsp;
+          // Define a max row index that we can't scroll past
+<span class="cstat-no" title="statement not covered" >          if (rowIndex &gt; maxRowIndex) {</span>
+<span class="cstat-no" title="statement not covered" >            rowIndex = maxRowIndex;</span>
+          }
+          
+<span class="cstat-no" title="statement not covered" >          var newRange = [];</span>
+<span class="cstat-no" title="statement not covered" >          if (rowCache.length &gt; uiGridCtrl.grid.options.virtualizationThreshold) {</span>
+            // Have we hit the threshold going down?
+<span class="cstat-no" title="statement not covered" >            if (uiGridCtrl.prevScrollTop &lt; scrollTop &amp;&amp; rowIndex &lt; uiGridCtrl.prevRowScrollIndex + uiGridCtrl.grid.options.scrollThreshold &amp;&amp; rowIndex &lt; maxRowIndex) {</span>
+<span class="cstat-no" title="statement not covered" >              return;</span>
+            }
+            //Have we hit the threshold going up?
+<span class="cstat-no" title="statement not covered" >            if (uiGridCtrl.prevScrollTop &gt; scrollTop &amp;&amp; rowIndex &gt; uiGridCtrl.prevRowScrollIndex - uiGridCtrl.grid.options.scrollThreshold &amp;&amp; rowIndex &lt; maxRowIndex) {</span>
+<span class="cstat-no" title="statement not covered" >              return;</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            var rangeStart = Math.max(0, rowIndex - uiGridCtrl.grid.options.excessRows);</span>
+<span class="cstat-no" title="statement not covered" >            var rangeEnd = Math.min(rowCache.length, rowIndex + minRows + uiGridCtrl.grid.options.excessRows);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            newRange = [rangeStart, rangeEnd];</span>
+          }
+          else {
+<span class="cstat-no" title="statement not covered" >            var maxLen = uiGridCtrl.grid.rows.length;</span>
+<span class="cstat-no" title="statement not covered" >            newRange = [0, Math.max(maxLen, minRows + uiGridCtrl.grid.options.excessRows)];</span>
+          }
+          
+<span class="cstat-no" title="statement not covered" >          updateViewableRowRange(newRange);</span>
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.prevRowScrollIndex = rowIndex;</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.redrawRows = <span class="fstat-no" title="function not covered" >function redrawRows() {</span></span>
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.adjustRows(uiGridCtrl.prevScrollTop, uiGridCtrl.prevScrolltopPercentage);</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.redrawColumns = <span class="fstat-no" title="function not covered" >function redrawColumns() {</span></span>
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.adjustColumns(uiGridCtrl.prevScrollLeft, uiGridCtrl.prevScrollleftPercentage);</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.redraw = <span class="fstat-no" title="function not covered" >function redraw() {</span></span>
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.redrawRows();</span>
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.redrawColumns();</span>
+        };
+&nbsp;
+        // Virtualization for horizontal scrolling
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.adjustScrollHorizontal = <span class="fstat-no" title="function not covered" >function (scrollLeft, scrollPercentage, force) {</span></span>
+<span class="cstat-no" title="statement not covered" >          if (uiGridCtrl.prevScrollLeft === scrollLeft &amp;&amp; !force) {</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+          }
+&nbsp;
+          // scrollLeft = uiGridCtrl.canvas[0].scrollWidth * scrollPercentage;
+<span class="cstat-no" title="statement not covered" >          scrollLeft = uiGridCtrl.grid.getCanvasWidth() * scrollPercentage;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.adjustColumns(scrollLeft, scrollPercentage);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.prevScrollLeft = scrollLeft;</span>
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.prevScrollleftPercentage = scrollPercentage;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          $scope.grid.refreshCanvas();</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.adjustColumns = <span class="fstat-no" title="function not covered" >function(scrollLeft, scrollPercentage) {</span></span>
+<span class="cstat-no" title="statement not covered" >          var minCols = uiGridCtrl.grid.minColumnsToRender();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          var columnCache = uiGridCtrl.grid.renderContainers.body.visibleColumnCache;</span>
+<span class="cstat-no" title="statement not covered" >          var maxColumnIndex = columnCache.length - minCols;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.maxColumnIndex = maxColumnIndex;</span>
+&nbsp;
+          // Calculate the scroll percentage according to the scrollTop location, if no percentage was provided
+<span class="cstat-no" title="statement not covered" >          if ((typeof(scrollPercentage) === 'undefined' || scrollPercentage === null) &amp;&amp; scrollLeft) {</span>
+<span class="cstat-no" title="statement not covered" >            scrollPercentage = scrollLeft / uiGridCtrl.grid.getCanvasWidth();</span>
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          var colIndex = Math.ceil(Math.min(maxColumnIndex, maxColumnIndex * scrollPercentage));</span>
+&nbsp;
+          // Define a max row index that we can't scroll past
+<span class="cstat-no" title="statement not covered" >          if (colIndex &gt; maxColumnIndex) {</span>
+<span class="cstat-no" title="statement not covered" >            colIndex = maxColumnIndex;</span>
+          }
+          
+<span class="cstat-no" title="statement not covered" >          var newRange = [];</span>
+<span class="cstat-no" title="statement not covered" >          if (columnCache.length &gt; uiGridCtrl.grid.options.columnVirtualizationThreshold &amp;&amp; uiGridCtrl.grid.getCanvasWidth() &gt; uiGridCtrl.grid.getViewportWidth()) {</span>
+            // Have we hit the threshold going down?
+<span class="cstat-no" title="statement not covered" >            if (uiGridCtrl.prevScrollLeft &lt; scrollLeft &amp;&amp; colIndex &lt; uiGridCtrl.prevColumnScrollIndex + uiGridCtrl.grid.options.horizontalScrollThreshold &amp;&amp; colIndex &lt; maxColumnIndex) {</span>
+<span class="cstat-no" title="statement not covered" >              return;</span>
+            }
+            //Have we hit the threshold going up?
+<span class="cstat-no" title="statement not covered" >            if (uiGridCtrl.prevScrollLeft &gt; scrollLeft &amp;&amp; colIndex &gt; uiGridCtrl.prevColumnScrollIndex - uiGridCtrl.grid.options.horizontalScrollThreshold &amp;&amp; colIndex &lt; maxColumnIndex) {</span>
+<span class="cstat-no" title="statement not covered" >              return;</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            var rangeStart = Math.max(0, colIndex - uiGridCtrl.grid.options.excessColumns);</span>
+<span class="cstat-no" title="statement not covered" >            var rangeEnd = Math.min(columnCache.length, colIndex + minCols + uiGridCtrl.grid.options.excessColumns);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            newRange = [rangeStart, rangeEnd];</span>
+          }
+          else {
+<span class="cstat-no" title="statement not covered" >            var maxLen = uiGridCtrl.grid.columns.length;</span>
+<span class="cstat-no" title="statement not covered" >            newRange = [0, Math.max(maxLen, minCols + uiGridCtrl.grid.options.excessColumns)];</span>
+          }
+          
+<span class="cstat-no" title="statement not covered" >          updateViewableColumnRange(newRange);</span>
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.prevColumnScrollIndex = colIndex;</span>
+        };
+&nbsp;
+        // Listen for scroll events
+<span class="cstat-no" title="statement not covered" >        var scrollUnbinder = $scope.$on(uiGridConstants.events.GRID_SCROLL, <span class="fstat-no" title="function not covered" >function(evt, args) {</span></span>
+          // GridUtil.requestAnimationFrame(function() {
+<span class="cstat-no" title="statement not covered" >            uiGridCtrl.prevScrollArgs = args;</span>
+&nbsp;
+            // Vertical scroll
+<span class="cstat-no" title="statement not covered" >            if (args.y) {</span>
+<span class="cstat-no" title="statement not covered" >              var scrollLength = (uiGridCtrl.grid.getCanvasHeight() - uiGridCtrl.grid.getViewportHeight());</span>
+&nbsp;
+              // Add the height of the native horizontal scrollbar, if it's there. Otherwise it will mask over the final row
+<span class="cstat-no" title="statement not covered" >              if (uiGridCtrl.grid.horizontalScrollbarHeight &amp;&amp; uiGridCtrl.grid.horizontalScrollbarHeight &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >                scrollLength = scrollLength + uiGridCtrl.grid.horizontalScrollbarHeight;</span>
+              }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              var oldScrollTop = uiGridCtrl.viewport[0].scrollTop;</span>
+              
+<span class="cstat-no" title="statement not covered" >              var scrollYPercentage;</span>
+<span class="cstat-no" title="statement not covered" >              if (typeof(args.y.percentage) !== 'undefined' &amp;&amp; args.y.percentage !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                scrollYPercentage = args.y.percentage;</span>
+              }
+              else <span class="cstat-no" title="statement not covered" >if (typeof(args.y.pixels) !== 'undefined' &amp;&amp; args.y.pixels !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                scrollYPercentage = args.y.percentage = (oldScrollTop + args.y.pixels) / scrollLength;</span>
+                // $log.debug('y.percentage', args.y.percentage);
+              }
+              else {
+<span class="cstat-no" title="statement not covered" >                throw new Error("No percentage or pixel value provided for scroll event Y axis");</span>
+              }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              var newScrollTop = Math.max(0, scrollYPercentage * scrollLength);</span>
+              
+              // NOTE: uiGridBody catches this in its 'scroll' event handler. setting scrollTop fires a scroll event
+              // uiGridCtrl.adjustScrollVertical(newScrollTop, scrollYPercentage);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              uiGridCtrl.viewport[0].scrollTop = newScrollTop;</span>
+              
+<span class="cstat-no" title="statement not covered" >              uiGridCtrl.grid.options.offsetTop = newScrollTop;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              uiGridCtrl.prevScrollArgs.y.pixels = newScrollTop - oldScrollTop;</span>
+            }
+&nbsp;
+            // Horizontal scroll
+<span class="cstat-no" title="statement not covered" >            if (args.x) {</span>
+<span class="cstat-no" title="statement not covered" >              var scrollWidth = (uiGridCtrl.grid.getCanvasWidth() - uiGridCtrl.grid.getViewportWidth());</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              var oldScrollLeft = uiGridCtrl.viewport[0].scrollLeft;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              var scrollXPercentage;</span>
+<span class="cstat-no" title="statement not covered" >              if (typeof(args.x.percentage) !== 'undefined' &amp;&amp; args.x.percentage !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                scrollXPercentage = args.x.percentage;</span>
+              }
+              else <span class="cstat-no" title="statement not covered" >if (typeof(args.x.pixels) !== 'undefined' &amp;&amp; args.x.pixels !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                scrollXPercentage = args.x.percentage = (oldScrollLeft + args.x.pixels) / scrollWidth;</span>
+                // $log.debug('x.percentage', args.x.percentage);
+              }
+              else {
+<span class="cstat-no" title="statement not covered" >                throw new Error("No percentage or pixel value provided for scroll event X axis");</span>
+              }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              var newScrollLeft = Math.max(0, scrollXPercentage * scrollWidth);</span>
+              
+              // uiGridCtrl.adjustScrollHorizontal(newScrollLeft, scrollXPercentage);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              uiGridCtrl.viewport[0].scrollLeft = newScrollLeft;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              if (uiGridCtrl.headerViewport) {</span>
+<span class="cstat-no" title="statement not covered" >                uiGridCtrl.headerViewport.scrollLeft = newScrollLeft;</span>
+              }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              uiGridCtrl.grid.options.offsetLeft = newScrollLeft;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              uiGridCtrl.prevScrollArgs.x.pixels = newScrollLeft - oldScrollLeft;</span>
+            }
+          // });
+        });
+&nbsp;
+        // Scroll the viewport when the mousewheel is used
+<span class="cstat-no" title="statement not covered" >        $elm.bind('wheel mousewheel DomMouseScroll MozMousePixelScroll', <span class="fstat-no" title="function not covered" >function(evt) {</span></span>
+          // use wheelDeltaY
+<span class="cstat-no" title="statement not covered" >          evt.preventDefault();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          var newEvent = GridUtil.normalizeWheelEvent(evt);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          var args = { target: $elm };</span>
+<span class="cstat-no" title="statement not covered" >          if (newEvent.deltaY !== 0) {</span>
+<span class="cstat-no" title="statement not covered" >            var scrollYAmount = newEvent.deltaY * -120;</span>
+&nbsp;
+            // Get the scroll percentage
+<span class="cstat-no" title="statement not covered" >            var scrollYPercentage = (uiGridCtrl.viewport[0].scrollTop + scrollYAmount) / (uiGridCtrl.grid.getCanvasHeight() - uiGridCtrl.grid.getViewportHeight());</span>
+&nbsp;
+            // Keep scrollPercentage within the range 0-1.
+<span class="cstat-no" title="statement not covered" >            if (scrollYPercentage &lt; 0) { <span class="cstat-no" title="statement not covered" >scrollYPercentage = 0; </span>}</span>
+            else <span class="cstat-no" title="statement not covered" >if (scrollYPercentage &gt; 1) { <span class="cstat-no" title="statement not covered" >scrollYPercentage = 1; </span>}</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            args.y = { percentage: scrollYPercentage, pixels: scrollYAmount };</span>
+          }
+<span class="cstat-no" title="statement not covered" >          if (newEvent.deltaX !== 0) {</span>
+<span class="cstat-no" title="statement not covered" >            var scrollXAmount = newEvent.deltaX * -120;</span>
+&nbsp;
+            // Get the scroll percentage
+<span class="cstat-no" title="statement not covered" >            var scrollXPercentage = (uiGridCtrl.viewport[0].scrollLeft + scrollXAmount) / (uiGridCtrl.grid.getCanvasWidth() - uiGridCtrl.grid.getViewportWidth());</span>
+&nbsp;
+            // Keep scrollPercentage within the range 0-1.
+<span class="cstat-no" title="statement not covered" >            if (scrollXPercentage &lt; 0) { <span class="cstat-no" title="statement not covered" >scrollXPercentage = 0; </span>}</span>
+            else <span class="cstat-no" title="statement not covered" >if (scrollXPercentage &gt; 1) { <span class="cstat-no" title="statement not covered" >scrollXPercentage = 1; </span>}</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            args.x = { percentage: scrollXPercentage, pixels: scrollXAmount };</span>
+          }
+&nbsp;
+          // $scope.$broadcast(uiGridConstants.events.GRID_SCROLL, args);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.fireScrollingEvent(args);</span>
+        });
+&nbsp;
+        
+<span class="cstat-no" title="statement not covered" >        var startY = 0,</span>
+            startX = 0,
+            scrollTopStart = 0,
+            scrollLeftStart = 0,
+            directionY = 1,
+            directionX = 1,
+            moveStart;
+<span class="fstat-no" title="function not covered" >        function touchmove(event) {</span>
+<span class="cstat-no" title="statement not covered" >          if (event.originalEvent) {</span>
+<span class="cstat-no" title="statement not covered" >            event = event.originalEvent;</span>
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          event.preventDefault();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          var deltaX, deltaY, newX, newY;</span>
+<span class="cstat-no" title="statement not covered" >          newX = event.targetTouches[0].screenX;</span>
+<span class="cstat-no" title="statement not covered" >          newY = event.targetTouches[0].screenY;</span>
+<span class="cstat-no" title="statement not covered" >          deltaX = -(newX - startX);</span>
+<span class="cstat-no" title="statement not covered" >          deltaY = -(newY - startY);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          directionY = (deltaY &lt; 1) ? -1 : 1;</span>
+<span class="cstat-no" title="statement not covered" >          directionX = (deltaX &lt; 1) ? -1 : 1;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          deltaY *= 2;</span>
+<span class="cstat-no" title="statement not covered" >          deltaX *= 2;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          var args = { target: event.target };</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          if (deltaY !== 0) {</span>
+<span class="cstat-no" title="statement not covered" >            var scrollYPercentage = (scrollTopStart + deltaY) / (uiGridCtrl.grid.getCanvasHeight() - uiGridCtrl.grid.getViewportHeight());</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (scrollYPercentage &gt; 1) { <span class="cstat-no" title="statement not covered" >scrollYPercentage = 1; </span>}</span>
+            else <span class="cstat-no" title="statement not covered" >if (scrollYPercentage &lt; 0) { <span class="cstat-no" title="statement not covered" >scrollYPercentage = 0; </span>}</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            args.y = { percentage: scrollYPercentage, pixels: deltaY };</span>
+          }
+<span class="cstat-no" title="statement not covered" >          if (deltaX !== 0) {</span>
+<span class="cstat-no" title="statement not covered" >            var scrollXPercentage = (scrollLeftStart + deltaX) / (uiGridCtrl.grid.getCanvasWidth() - uiGridCtrl.grid.getViewportWidth());</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (scrollXPercentage &gt; 1) { <span class="cstat-no" title="statement not covered" >scrollXPercentage = 1; </span>}</span>
+            else <span class="cstat-no" title="statement not covered" >if (scrollXPercentage &lt; 0) { <span class="cstat-no" title="statement not covered" >scrollXPercentage = 0; </span>}</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            args.x = { percentage: scrollXPercentage, pixels: deltaX };</span>
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          $scope.$broadcast(uiGridConstants.events.GRID_SCROLL, args);</span>
+        }
+        
+<span class="fstat-no" title="function not covered" >        function touchend(event) {</span>
+<span class="cstat-no" title="statement not covered" >          if (event.originalEvent) {</span>
+<span class="cstat-no" title="statement not covered" >            event = event.originalEvent;</span>
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          event.preventDefault();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          $document.unbind('touchmove', touchmove);</span>
+<span class="cstat-no" title="statement not covered" >          $document.unbind('touchend', touchend);</span>
+<span class="cstat-no" title="statement not covered" >          $document.unbind('touchcancel', touchend);</span>
+&nbsp;
+          // Get the distance we moved on the Y axis
+<span class="cstat-no" title="statement not covered" >          var scrollTopEnd = uiGridCtrl.viewport[0].scrollTop;</span>
+<span class="cstat-no" title="statement not covered" >          var scrollLeftEnd = uiGridCtrl.viewport[0].scrollTop;</span>
+<span class="cstat-no" title="statement not covered" >          var deltaY = Math.abs(scrollTopEnd - scrollTopStart);</span>
+<span class="cstat-no" title="statement not covered" >          var deltaX = Math.abs(scrollLeftEnd - scrollLeftStart);</span>
+&nbsp;
+          // Get the duration it took to move this far
+<span class="cstat-no" title="statement not covered" >          var moveDuration = (new Date()) - moveStart;</span>
+&nbsp;
+          // Scale the amount moved by the time it took to move it (i.e. quicker, longer moves == more scrolling after the move is over)
+<span class="cstat-no" title="statement not covered" >          var moveYScale = deltaY / moveDuration;</span>
+<span class="cstat-no" title="statement not covered" >          var moveXScale = deltaX / moveDuration;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          var decelerateInterval = 63; </span>// 1/16th second
+<span class="cstat-no" title="statement not covered" >          var decelerateCount = 8; </span>// == 1/2 second
+<span class="cstat-no" title="statement not covered" >          var scrollYLength = 120 * directionY * moveYScale;</span>
+<span class="cstat-no" title="statement not covered" >          var scrollXLength = 120 * directionX * moveXScale;</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >          function decelerate() {</span>
+<span class="cstat-no" title="statement not covered" >            $timeout(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >              var args = { target: event.target };</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              if (scrollYLength !== 0) {</span>
+<span class="cstat-no" title="statement not covered" >                var scrollYPercentage = (uiGridCtrl.viewport[0].scrollTop + scrollYLength) / (uiGridCtrl.grid.getCanvasHeight() - uiGridCtrl.grid.getViewportHeight());</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                args.y = { percentage: scrollYPercentage, pixels: scrollYLength };</span>
+              }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              if (scrollXLength !== 0) {</span>
+<span class="cstat-no" title="statement not covered" >                var scrollXPercentage = (uiGridCtrl.viewport[0].scrollLeft + scrollXLength) / (uiGridCtrl.grid.getCanvasWidth() - uiGridCtrl.grid.getViewportWidth());</span>
+<span class="cstat-no" title="statement not covered" >                args.x = { percentage: scrollXPercentage, pixels: scrollXLength };</span>
+              }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              $scope.$broadcast(uiGridConstants.events.GRID_SCROLL, args);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              decelerateCount = decelerateCount -1;</span>
+<span class="cstat-no" title="statement not covered" >              scrollYLength = scrollYLength / 2;</span>
+<span class="cstat-no" title="statement not covered" >              scrollXLength = scrollXLength / 2;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              if (decelerateCount &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >                decelerate();</span>
+              }
+              else {
+<span class="cstat-no" title="statement not covered" >                uiGridCtrl.scrollbars.forEach(<span class="fstat-no" title="function not covered" >function (sbar) {</span></span>
+<span class="cstat-no" title="statement not covered" >                  sbar.removeClass('ui-grid-scrollbar-visible');</span>
+<span class="cstat-no" title="statement not covered" >                  sbar.removeClass('ui-grid-scrolling');</span>
+                });
+              }
+            }, decelerateInterval);
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          decelerate();</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (GridUtil.isTouchEnabled()) {</span>
+<span class="cstat-no" title="statement not covered" >          $elm.bind('touchstart', <span class="fstat-no" title="function not covered" >function (event) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (event.originalEvent) {</span>
+<span class="cstat-no" title="statement not covered" >              event = event.originalEvent;</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            event.preventDefault();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            uiGridCtrl.scrollbars.forEach(<span class="fstat-no" title="function not covered" >function (sbar) {</span></span>
+<span class="cstat-no" title="statement not covered" >              sbar.addClass('ui-grid-scrollbar-visible');</span>
+<span class="cstat-no" title="statement not covered" >              sbar.addClass('ui-grid-scrolling');</span>
+            });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            moveStart = new Date();</span>
+<span class="cstat-no" title="statement not covered" >            startY = event.targetTouches[0].screenY;</span>
+<span class="cstat-no" title="statement not covered" >            startX = event.targetTouches[0].screenX;</span>
+<span class="cstat-no" title="statement not covered" >            scrollTopStart = uiGridCtrl.viewport[0].scrollTop;</span>
+<span class="cstat-no" title="statement not covered" >            scrollLeftStart = uiGridCtrl.viewport[0].scrollLeft;</span>
+            
+<span class="cstat-no" title="statement not covered" >            $document.on('touchmove', touchmove);</span>
+<span class="cstat-no" title="statement not covered" >            $document.on('touchend touchcancel', touchend);</span>
+          });
+        }
+&nbsp;
+        // TODO(c0bra): Scroll the viewport when the up and down arrow keys are used? This would interfere with cell navigation
+        // $elm.bind('keydown', function(evt, args) {
+&nbsp;
+        // });
+&nbsp;
+        // Unbind all $watches and events on $destroy
+<span class="cstat-no" title="statement not covered" >        $elm.bind('$destroy', <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >          scrollUnbinder();</span>
+<span class="cstat-no" title="statement not covered" >          $elm.unbind('keydown');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          ['touchstart', 'touchmove', 'touchend','keydown', 'wheel', 'mousewheel', 'DomMouseScroll', 'MozMousePixelScroll'].forEach(<span class="fstat-no" title="function not covered" >function (eventName) {</span></span>
+<span class="cstat-no" title="statement not covered" >            $elm.unbind(eventName);</span>
+          });
+        });
+&nbsp;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var setRenderedRows = <span class="fstat-no" title="function not covered" >function (newRows) {</span></span>
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.grid.setRenderedRows(newRows);</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var setRenderedColumns = <span class="fstat-no" title="function not covered" >function (newColumns) {</span></span>
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.grid.setRenderedColumns(newColumns);</span>
+<span class="cstat-no" title="statement not covered" >          updateColumnOffset();</span>
+        };
+&nbsp;
+        // Method for updating the visible rows
+<span class="cstat-no" title="statement not covered" >        var updateViewableRowRange = <span class="fstat-no" title="function not covered" >function(renderedRange) {</span></span>
+          // Slice out the range of rows from the data
+          // var rowArr = uiGridCtrl.grid.rows.slice(renderedRange[0], renderedRange[1]);
+<span class="cstat-no" title="statement not covered" >          var rowArr = uiGridCtrl.grid.renderContainers.body.visibleRowCache.slice(renderedRange[0], renderedRange[1]);</span>
+&nbsp;
+          // Define the top-most rendered row
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.currentTopRow = renderedRange[0];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          setRenderedRows(rowArr);</span>
+        };
+&nbsp;
+        // Method for updating the visible columns
+<span class="cstat-no" title="statement not covered" >        var updateViewableColumnRange = <span class="fstat-no" title="function not covered" >function(renderedRange) {</span></span>
+          // Slice out the range of rows from the data
+          // var columnArr = uiGridCtrl.grid.columns.slice(renderedRange[0], renderedRange[1]);
+<span class="cstat-no" title="statement not covered" >          var columnArr = uiGridCtrl.grid.renderContainers.body.visibleColumnCache.slice(renderedRange[0], renderedRange[1]);</span>
+&nbsp;
+          // Define the left-most rendered columns
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.currentFirstColumn = renderedRange[0];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          setRenderedColumns(columnArr);</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.rowStyle = <span class="fstat-no" title="function not covered" >function (index) {</span></span>
+<span class="cstat-no" title="statement not covered" >          var styles = {};</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          if (index === 0 &amp;&amp; uiGridCtrl.currentTopRow !== 0) {</span>
+            // The row offset-top is just the height of the rows above the current top-most row, which are no longer rendered
+<span class="cstat-no" title="statement not covered" >            var hiddenRowWidth = (uiGridCtrl.currentTopRow) * uiGridCtrl.grid.options.rowHeight;</span>
+&nbsp;
+            // return { 'margin-top': hiddenRowWidth + 'px' };
+<span class="cstat-no" title="statement not covered" >            styles['margin-top'] = hiddenRowWidth + 'px';</span>
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          if (uiGridCtrl.currentFirstColumn !== 0) {</span>
+<span class="cstat-no" title="statement not covered" >            styles['margin-left'] = uiGridCtrl.columnOffset + 'px';</span>
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          return styles;</span>
+        };
+        
+<span class="cstat-no" title="statement not covered" >        var updateColumnOffset = <span class="fstat-no" title="function not covered" >function() {</span></span>
+          // Calculate the width of the columns on the left side that are no longer rendered.
+          //  That will be the offset for the columns as we scroll horizontally.
+<span class="cstat-no" title="statement not covered" >          var hiddenColumnsWidth = 0;</span>
+<span class="cstat-no" title="statement not covered" >          for (var i = 0; i &lt; uiGridCtrl.currentFirstColumn; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            hiddenColumnsWidth += uiGridCtrl.grid.renderContainers.body.visibleColumnCache[i].drawnWidth;</span>
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          uiGridCtrl.columnOffset = hiddenColumnsWidth;</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.columnStyle = <span class="fstat-no" title="function not covered" >function (index) {</span></span>
+<span class="cstat-no" title="statement not covered" >          if (index === 0 &amp;&amp; uiGridCtrl.currentFirstColumn !== 0) {</span>
+<span class="cstat-no" title="statement not covered" >            var offset = uiGridCtrl.columnOffset;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            return { 'margin-left': offset + 'px' };</span>
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          return null;</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        uiGridCtrl.fireEvent('body-post-link');</span>
+      }
+    };
+  }]);
+&nbsp;
+})();</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Aug 11 2014 15:13:54 GMT-0700 (PDT)</div>
+</div>
+
+<script src="../../../prettify.js"></script>
+
+<script src="https://yui-s.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>

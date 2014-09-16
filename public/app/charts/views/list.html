@@ -1,0 +1,103 @@
+<!-- <table class="table table-condensed"> -->
+<!-- 	<thead> -->
+<!-- 		<tr> -->
+<!-- 			<th>Chart Name</th> -->
+<!-- 			<th>Created</th> -->
+<!-- 			<th></th> -->
+<!-- 		</tr> -->
+<!-- 	</thead> -->
+<!-- 	<tbody> -->
+<!-- 		<tr ng-repeat="chart in charts | filter:search | orderBy:'name'"> --> 
+<!-- 			<td>{{chart.name}}</td> --> 
+<!-- 			<td>{{chart.created | date}}</td> --> 
+<!-- 			<td> --> 
+<!-- 				<material-button ng-click="openChart(chart)"><i class="icon-white glyphicon glyphicon-pencil"></i> Edit</material-button> -->
+<!-- 				<material-button ng-click="removeChart(chart)"><i class="icon-white glyphicon glyphicon-remove"></i> Delete</material-button> -->
+<!-- 			</td> -->
+<!-- 		</tr> -->
+<!-- 	</tbody> -->
+<!-- </table> -->
+<!-- <material-button class="material-button-colored" ng-click="openChart()">Add New Chart</material-button> --> 
+<div class="row chartList-row">
+
+	<div class="col-md-6 chartList-col-1">
+		<div class="easy-demo">
+			<h2 class="subtitle thin"></h2>
+			<div class="easy chart" zingchart id='chart_preview' sc-data="chart_json"></div>
+		</div>
+
+	</div>
+	<div class="col-md-6 chartList-col-2">
+		<ul class="chartList" style="list-style-type:none;">  <li>
+				<input type="text" ng-model="search" class="search-query chartList-search"
+						placeholder="Search"><br></li>
+					<!-- new chart item -->
+					<li style="height:45px;"></li>
+					<li class="chartList-item">
+						<material-button class="create-new-button"
+								ui-sref="client.editor.ide()"	
+							> <a style="color:#fff;">Create new ZingChart</a></material-button>
+					</li>
+					<li style="height:25px;"></li>
+
+					<li class="chartList-item"ng-repeat="chart in charts | filter:search | orderBy:'name'">
+
+						<h3 class=header> 
+							<!--<a ng-click="isCollapsed = !isCollapsed">{{chart.name}}</a>-->
+							<a ui-sref="client.editor.ide({zingId: '{{chart.zingId}}'})">{{chart.name}}</a> 
+							<small ng-click='renderChart(chart.data)'>
+								<i class="glyphicon glyphicon-play"></i>
+							</small></h3>
+						<p class="info"> {{chart.created | date}} </p>
+						<div ui-sref="client.editor.ide({zingId: '{{chart.zingId}}'})" id='{{chart.id}}' class="ace-editor" ng-model=chart.data readonly="true" ui-ace="{ 
+								useWrapMode : true, 
+								showGutter: false,
+								theme:'katzenmilch',
+								mode: 'json',
+								onLoad: aceLoaded }" > </div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+
+		<style>
+			.header{
+				margin-bottom:0;
+			}
+			.info {
+				margin:0;
+			}
+			.ace_scrollbar {
+				display: none !important; 
+			} 
+
+	
+		</style>
+		<script>
+			zingchart.MODULESDIR = '../modules';
+			this.path_to_theme = "themes/dataweek.tx";
+		</script>
+		<script src="lib/shared.js"></script>
+
+		<script type="text/javascript" >
+			$(document).ready(function() {
+				resizeElements();
+			});
+			$(window).resize(function() { resizeElements();
+			});
+			function resizeElements() {
+				var totalHeight = $(window).height()-100;
+				var totalWidth = $(window).width()-100;
+				var headerHeight = $('header').height();
+				$('.container').css('height', totalHeight);
+				$('.container').css('width', totalWidth);
+				$('.container').css('padding', '25px');
+				$('.container').css('margin', '25px');
+				$('.navigation').css('height', totalHeight-82);
+				$('.navigation').css('overflow','scroll');
+			}
+
+		</script>
+
+

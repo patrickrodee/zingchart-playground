@@ -1,0 +1,13 @@
+<div class="api-header"><strong class="colored-title">JSON Attributes/Syntax</strong></div>
+<ul class="list-group">
+	<li class="list-group-item" ng-repeat="_cat in categories track by $index">
+   <!-- <a ui-sref="api-category({catId: '{{_cat.id}}'})">{{_cat.name}}</a> -->
+   <div  ui-sref="editor.ide.api.categories.detail({ catId: '{{_cat.id}}'})">
+		<h5>{{_cat.title}} ({{_cat.id}})<br>
+			<small> {{_cat.name}}  
+			</small></h5>
+	
+	</div>
+	</li>
+</ul><br>
+

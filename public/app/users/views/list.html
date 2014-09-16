@@ -1,0 +1,26 @@
+
+
+
+<input type="text" ng-model="search" class="search-query" placeholder="Search">
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Email</th>
+              <th>Created</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="user in users | filter:search | orderBy:'name'">
+              <td>{{user.name}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.created | date}}</td>
+              <td>
+                <material-button ng-click="openUser(user)"><i class="icon-white glyphicon glyphicon-pencil"></i> Edit</material-button>
+                <material-button ng-click="removeUser(user._id)"><i class="icon-white glyphicon glyphicon-remove"></i> Delete</material-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <material-button class="material-button-colored" ng-click="openUser()">Add New User</material-button>

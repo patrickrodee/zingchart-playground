@@ -1,0 +1,1882 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for features/resize-columns/js/ui-grid-column-resizer.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../../../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("https://yui-s.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">features/resize-columns/js/ui-grid-column-resizer.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">80.32% <small>(151 / 188)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">60.87% <small>(70 / 115)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">81.48% <small>(22 / 27)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">81.67% <small>(147 / 180)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">features/resize-columns/js/</a> &#187; ui-grid-column-resizer.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">48</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">90</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">90</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">90</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">90</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">90</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function(){
+  'use strict';
+&nbsp;
+  var module = angular.module('ui.grid.resizeColumns', ['ui.grid']);
+&nbsp;
+  module.constant('columnBounds', {
+    minWidth: 35
+  });
+&nbsp;
+&nbsp;
+  module.service('uiGridResizeColumnsService', ['$log','$q',
+    function ($log,$q) {
+&nbsp;
+      var service = {
+        defaultGridOptions: function(gridOptions){
+          //default option to true unless it was explicitly set to false
+          /**
+           *  @ngdoc object
+           *  @name ui.grid.resizeColumns.api:GridOptions
+           *
+           *  @description GridOptions for resizeColumns feature
+           */
+&nbsp;
+          /**
+           *  @ngdoc object
+           *  @name enableColumnResizing
+           *  @propertyOf  ui.grid.resizeColumns.api:GridOptions
+           *  @description Enable column resizing &lt;br/&gt;Defaults to true
+           */
+          gridOptions.enableColumnResizing = gridOptions.enableColumnResizing !== false;
+&nbsp;
+          //legacy support
+          //use old name if it is explicitly false
+          if (gridOptions.enableColumnResize === false){
+            gridOptions.enableColumnResizing = false;
+          }
+        },
+&nbsp;
+        colResizerColumnBuilder: function (colDef, col, gridOptions) {
+&nbsp;
+          var promises = [];
+          /**
+           *  @ngdoc object
+           *  @name ui.grid.resizeColumns.api:ColDef
+           *
+           *  @description ColDef for resizeColumns feature
+           */
+&nbsp;
+          /**
+           *  @ngdoc object
+           *  @name enableColumnResizing
+           *  @propertyOf  ui.grid.resizeColumns.api:ColDef
+           *  @description Enable column resizing &lt;br/&gt;Defaults to GridOptions.enableColumnResizing
+           */
+          //default to true unless gridOptions or colDef is explicitly false
+          colDef.enableColumnResizing = colDef.enableColumnResizing === undefined ? gridOptions.enableColumnResizing : colDef.enableColumnResizing;
+&nbsp;
+&nbsp;
+          //legacy support of old option name
+          <span class="missing-if-branch" title="if path not taken" >I</span>if (colDef.enableColumnResize === false){
+<span class="cstat-no" title="statement not covered" >            colDef.enableColumnResizing = false;</span>
+          }
+&nbsp;
+          return $q.all(promises);
+        }
+      };
+&nbsp;
+      return service;
+&nbsp;
+    }]);
+&nbsp;
+&nbsp;
+  /**
+   * @ngdoc directive
+   * @name ui.grid.resizeColumns.directive:uiGridResizeColumns
+   * @element div
+   * @restrict A
+   * @description
+   * Enables resizing for all columns on the grid. If, for some reason, you want to use the ui-grid-resize-columns directive, but not allow column resizing, you can explicitly set the
+   * option to false. This prevents resizing for the entire grid, regardless of individual colDef options.
+   *
+   * @example
+   &lt;doc:example module="app"&gt;
+   &lt;doc:source&gt;
+   &lt;script&gt;
+   var app = angular.module('app', ['ui.grid', 'ui.grid.resizeColumns']);
+&nbsp;
+   app.controller('MainCtrl', ['$scope', function ($scope) {
+          $scope.gridOpts = {
+            data: [
+              { "name": "Ethel Price", "gender": "female", "company": "Enersol" },
+              { "name": "Claudine Neal", "gender": "female", "company": "Sealoud" },
+              { "name": "Beryl Rice", "gender": "female", "company": "Velity" },
+              { "name": "Wilder Gonzales", "gender": "male", "company": "Geekko" }
+            ]
+          };
+        }]);
+   &lt;/script&gt;
+&nbsp;
+   &lt;div ng-controller="MainCtrl"&gt;
+   &lt;div class="testGrid" ui-grid="gridOpts" ui-grid-resize-columns &gt;&lt;/div&gt;
+   &lt;/div&gt;
+   &lt;/doc:source&gt;
+   &lt;doc:scenario&gt;
+&nbsp;
+   &lt;/doc:scenario&gt;
+   &lt;/doc:example&gt;
+   */
+  module.directive('uiGridResizeColumns', ['$log', 'uiGridResizeColumnsService', <span class="fstat-no" title="function not covered" >function ($log, uiGridResizeColumnsService) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+      replace: true,
+      priority: 0,
+      require: '^uiGrid',
+      scope: false,
+      compile: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return {</span>
+          pre: <span class="fstat-no" title="function not covered" >function ($scope, $elm, $attrs, uiGridCtrl) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            uiGridResizeColumnsService.defaultGridOptions(uiGridCtrl.grid.options);</span>
+<span class="cstat-no" title="statement not covered" >            uiGridCtrl.grid.registerColumnBuilder( uiGridResizeColumnsService.colResizerColumnBuilder);</span>
+&nbsp;
+          },
+          post: <span class="fstat-no" title="function not covered" >function ($scope, $elm, $attrs, uiGridCtrl) {</span>
+          }
+        };
+      }
+    };
+  }]);
+&nbsp;
+  // Extend the uiGridHeaderCell directive
+  module.directive('uiGridHeaderCell', ['$log', '$templateCache', '$compile', '$q', function ($log, $templateCache, $compile, $q) {
+    return {
+      // Run after the original uiGridHeaderCell
+      priority: -10,
+      require: '^uiGrid',
+      // scope: false,
+      compile: function() {
+        return {
+          post: function ($scope, $elm, $attrs, uiGridCtrl) {
+           if (uiGridCtrl.grid.options.enableColumnResizing) {
+              var renderIndexDefer = $q.defer();
+&nbsp;
+              $attrs.$observe('renderIndex', function (n, o) {
+                $scope.renderIndex = $scope.$eval(n);
+&nbsp;
+                renderIndexDefer.resolve();
+              });
+&nbsp;
+              renderIndexDefer.promise.then(function() {
+                var columnResizerElm = $templateCache.get('ui-grid/columnResizer');
+&nbsp;
+                var resizerLeft = angular.element(columnResizerElm).clone();
+                var resizerRight = angular.element(columnResizerElm).clone();
+&nbsp;
+                resizerLeft.attr('position', 'left');
+                resizerRight.attr('position', 'right');
+&nbsp;
+                var col = $scope.col;
+                
+                // Get the column to the left of this one
+                var otherCol = uiGridCtrl.grid.renderedColumns[$scope.renderIndex - 1];
+&nbsp;
+                // Don't append the left resizer if this is the first column or the column to the left of this one has resizing disabled
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (otherCol &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >$scope.col.index !== 0 </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >otherCol.colDef.enableColumnResizing !== false)</span> {
+<span class="cstat-no" title="statement not covered" >                  $elm.prepend(resizerLeft);</span>
+                }
+                
+                // Don't append the right resizer if this column has resizing disabled
+                //if ($scope.col.index !== $scope.grid.renderedColumns.length - 1 &amp;&amp; $scope.col.colDef.enableColumnResizing !== false) {
+                <span class="missing-if-branch" title="else path not taken" >E</span>if ($scope.col.colDef.enableColumnResizing !== false) {
+                  $elm.append(resizerRight);
+                }
+&nbsp;
+                $compile(resizerLeft)($scope);
+                $compile(resizerRight)($scope);
+              });
+            }
+          }
+        };
+      }
+    };
+  }]);
+&nbsp;
+&nbsp;
+  
+  /**
+   * @ngdoc directive
+   * @name ui.grid.resizeColumns.directive:uiGridColumnResizer
+   * @element div
+   * @restrict A
+   *
+   * @description
+   * Draggable handle that controls column resizing.
+   * 
+   * @example
+   &lt;doc:example module="app"&gt;
+     &lt;doc:source&gt;
+       &lt;script&gt;
+        var app = angular.module('app', ['ui.grid', 'ui.grid.resizeColumns']);
+&nbsp;
+        app.controller('MainCtrl', ['$scope', function ($scope) {
+          $scope.gridOpts = {
+            enableColumnResizing: true,
+            data: [
+              { "name": "Ethel Price", "gender": "female", "company": "Enersol" },
+              { "name": "Claudine Neal", "gender": "female", "company": "Sealoud" },
+              { "name": "Beryl Rice", "gender": "female", "company": "Velity" },
+              { "name": "Wilder Gonzales", "gender": "male", "company": "Geekko" }
+            ]
+          };
+        }]);
+       &lt;/script&gt;
+&nbsp;
+       &lt;div ng-controller="MainCtrl"&gt;
+        &lt;div class="testGrid" ui-grid="gridOpts"&gt;&lt;/div&gt;
+       &lt;/div&gt;
+     &lt;/doc:source&gt;
+     &lt;doc:scenario&gt;
+      // TODO: e2e specs?
+        // TODO: Obey minWidth and maxWIdth;
+&nbsp;
+      // TODO: post-resize a horizontal scroll event should be fired
+     &lt;/doc:scenario&gt;
+   &lt;/doc:example&gt;
+   */  
+  module.directive('uiGridColumnResizer', ['$log', '$document', 'gridUtil', 'uiGridConstants', 'columnBounds', function ($log, $document, gridUtil, uiGridConstants, columnBounds) {
+    var resizeOverlay = angular.element('&lt;div class="ui-grid-resize-overlay"&gt;&lt;/div&gt;');
+&nbsp;
+    var resizer = {
+      priority: 0,
+      scope: {
+        col: '=',
+        position: '@',
+        renderIndex: '='
+      },
+      require: '?^uiGrid',
+      link: function ($scope, $elm, $attrs, uiGridCtrl) {
+        var startX = 0,
+            x = 0,
+            gridLeft = 0;
+&nbsp;
+        if ($scope.position === 'left') {
+          $elm.addClass('left');
+        }
+        else <span class="missing-if-branch" title="else path not taken" >E</span>if ($scope.position === 'right') {
+          $elm.addClass('right');
+        }
+&nbsp;
+        // Resize all the other columns around col
+        function resizeAroundColumn(col) {
+          // Get this column's render container
+          var renderContainer = col.getRenderContainer();
+&nbsp;
+          renderContainer.visibleColumnCache.forEach(function (column) {
+            // Skip the column we just resized
+            if (column.index === col.index) { return; }
+            
+            var colDef = column.colDef;
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (!colDef.width || (<span class="branch-1 cbranch-no" title="branch not covered" >angular.isString(colDef.width) </span>&amp;&amp; (<span class="branch-2 cbranch-no" title="branch not covered" >colDef.width.indexOf('*') !== -1 </span>|| <span class="branch-3 cbranch-no" title="branch not covered" >colDef.width.indexOf('%') !== -1)</span>)) {
+              colDef.width = column.drawnWidth;
+            }
+          });
+        }
+&nbsp;
+        // Build the columns then refresh the grid canvas
+        //   takes an argument representing the diff along the X-axis that the resize had
+        function buildColumnsAndRefresh(xDiff) {
+          // Build the columns
+          uiGridCtrl.grid.buildColumns()
+            .then(function() {
+              // Then refresh the grid canvas, rebuilding the styles so that the scrollbar updates its size
+              uiGridCtrl.refreshCanvas(true)
+                .then(<span class="fstat-no" title="function not covered" >function() {</span>
+                  // If virtual scrolling is turned on we need to update the scrollbar and stuff. The native scrollbars update automatically, of course
+<span class="cstat-no" title="statement not covered" >                  if (uiGridCtrl.grid.options.enableVirtualScrolling) {</span>
+                    // Then fire a scroll event to put the scrollbar in the right place, so it doesn't end up too far ahead or behind
+<span class="cstat-no" title="statement not covered" >                    var args = uiGridCtrl.prevScrollArgs ? uiGridCtrl.prevScrollArgs : { x: { percentage: 0 } };</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    args.target = $elm;</span>
+                      
+                    // Add an extra bit of percentage to the scroll event based on the xDiff we were passed
+<span class="cstat-no" title="statement not covered" >                    if (xDiff &amp;&amp; args.x &amp;&amp; args.x.pixels) {</span>
+<span class="cstat-no" title="statement not covered" >                      var extraPercent = xDiff / uiGridCtrl.grid.getHeaderViewportWidth();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                      args.x.percentage = args.x.percentage - extraPercent;</span>
+&nbsp;
+                      // Can't be less than 0% or more than 100%
+<span class="cstat-no" title="statement not covered" >                      if (args.x.percentage &gt; 1) { <span class="cstat-no" title="statement not covered" >args.x.percentage = 1; </span>}</span>
+                      else <span class="cstat-no" title="statement not covered" >if (args.x.percentage &lt; 0) { <span class="cstat-no" title="statement not covered" >args.x.percentage = 0; </span>}</span>
+                    }
+                    
+                    // Fire the scroll event
+<span class="cstat-no" title="statement not covered" >                    uiGridCtrl.fireScrollingEvent(args);</span>
+                  }
+                });
+            });
+        }
+&nbsp;
+        function mousemove(event, args) {
+          <span class="missing-if-branch" title="else path not taken" >E</span>if (event.originalEvent) { event = event.originalEvent; }
+          event.preventDefault();
+&nbsp;
+          x = event.clientX - gridLeft;
+&nbsp;
+          <span class="missing-if-branch" title="if path not taken" >I</span>if (x &lt; 0) { <span class="cstat-no" title="statement not covered" >x = 0; </span>}
+          else <span class="missing-if-branch" title="if path not taken" >I</span>if (x &gt; uiGridCtrl.grid.gridWidth) { <span class="cstat-no" title="statement not covered" >x = uiGridCtrl.grid.gridWidth; </span>}
+&nbsp;
+          // The other column to resize (the one next to this one)
+          var col = $scope.col;
+          var otherCol;
+          <span class="missing-if-branch" title="if path not taken" >I</span>if ($scope.position === 'left') {
+            // Get the column to the left of this one
+<span class="cstat-no" title="statement not covered" >            col = uiGridCtrl.grid.renderedColumns[$scope.renderIndex - 1];</span>
+<span class="cstat-no" title="statement not covered" >            otherCol = $scope.col;</span>
+          }
+          else <span class="missing-if-branch" title="else path not taken" >E</span>if ($scope.position === 'right') {
+            otherCol = uiGridCtrl.grid.renderedColumns[$scope.renderIndex + 1];
+          }
+&nbsp;
+          // Don't resize if it's disabled on this column
+          <span class="missing-if-branch" title="if path not taken" >I</span>if (col.colDef.enableColumnResizing === false) {
+<span class="cstat-no" title="statement not covered" >            return;</span>
+          }
+&nbsp;
+          <span class="missing-if-branch" title="else path not taken" >E</span>if (!uiGridCtrl.grid.element.hasClass('column-resizing')) {
+            uiGridCtrl.grid.element.addClass('column-resizing');
+          }
+&nbsp;
+          // Get the diff along the X axis
+          var xDiff = x - startX;
+&nbsp;
+          // Get the width that this mouse would give the column
+          var newWidth = col.drawnWidth + xDiff;
+&nbsp;
+          // If the new width would be less than the column's allowably minimum width, don't allow it
+          <span class="missing-if-branch" title="if path not taken" >I</span>if (col.colDef.minWidth &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >newWidth &lt; col.colDef.minWidth)</span> {
+<span class="cstat-no" title="statement not covered" >            x = x + (col.colDef.minWidth - newWidth);</span>
+          }
+          else <span class="missing-if-branch" title="if path not taken" >I</span>if (!col.colDef.minWidth &amp;&amp; columnBounds.minWidth &amp;&amp; newWidth &lt; columnBounds.minWidth) {
+<span class="cstat-no" title="statement not covered" >            x = x + (col.colDef.minWidth - newWidth);</span>
+          }
+          else <span class="missing-if-branch" title="if path not taken" >I</span>if (col.colDef.maxWidth &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >newWidth &gt; col.colDef.maxWidth)</span> {
+<span class="cstat-no" title="statement not covered" >            x = x + (col.colDef.maxWidth - newWidth);</span>
+          }
+          
+          resizeOverlay.css({ left: x + 'px' });
+&nbsp;
+          uiGridCtrl.fireEvent(uiGridConstants.events.ITEM_DRAGGING);
+        }
+&nbsp;
+        function mouseup(event, args) {
+          <span class="missing-if-branch" title="else path not taken" >E</span>if (event.originalEvent) { event = event.originalEvent; }
+          event.preventDefault();
+&nbsp;
+          uiGridCtrl.grid.element.removeClass('column-resizing');
+&nbsp;
+          resizeOverlay.remove();
+&nbsp;
+          // Resize the column
+          x = event.clientX - gridLeft;
+          var xDiff = x - startX;
+&nbsp;
+          <span class="missing-if-branch" title="if path not taken" >I</span>if (xDiff === 0) {
+<span class="cstat-no" title="statement not covered" >            $document.off('mouseup', mouseup);</span>
+<span class="cstat-no" title="statement not covered" >            $document.off('mousemove', mousemove);</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+          }
+&nbsp;
+          // The other column to resize (the one next to this one)
+          var col = $scope.col;
+          var otherCol;
+          <span class="missing-if-branch" title="if path not taken" >I</span>if ($scope.position === 'left') {
+            // Get the column to the left of this one
+<span class="cstat-no" title="statement not covered" >            col = uiGridCtrl.grid.renderedColumns[$scope.renderIndex - 1];</span>
+<span class="cstat-no" title="statement not covered" >            otherCol = $scope.col;</span>
+          }
+          else <span class="missing-if-branch" title="else path not taken" >E</span>if ($scope.position === 'right') {
+            otherCol = uiGridCtrl.grid.renderedColumns[$scope.renderIndex + 1];
+          }
+&nbsp;
+          // Don't resize if it's disabled on this column
+          <span class="missing-if-branch" title="if path not taken" >I</span>if (col.colDef.enableColumnResizing === false) {
+<span class="cstat-no" title="statement not covered" >            return;</span>
+          }
+&nbsp;
+          // Get the new width
+          var newWidth = col.drawnWidth + xDiff;
+&nbsp;
+          // If the new width is less than the minimum width, make it the minimum width
+          if (col.colDef.minWidth &amp;&amp; newWidth &lt; col.colDef.minWidth) {
+            newWidth = col.colDef.minWidth;
+          }
+          else <span class="missing-if-branch" title="if path not taken" >I</span>if (!col.colDef.minWidth &amp;&amp; columnBounds.minWidth &amp;&amp; newWidth &lt; columnBounds.minWidth) {
+<span class="cstat-no" title="statement not covered" >            newWidth = columnBounds.minWidth;</span>
+          }
+          // 
+          if (col.colDef.maxWidth &amp;&amp; newWidth &gt; col.colDef.maxWidth) {
+            newWidth = col.colDef.maxWidth;
+          }
+          
+          col.colDef.width = newWidth;
+&nbsp;
+          // All other columns because fixed to their drawn width, if they aren't already
+          resizeAroundColumn(col);
+&nbsp;
+          buildColumnsAndRefresh(xDiff);
+&nbsp;
+          $document.off('mouseup', mouseup);
+          $document.off('mousemove', mousemove);
+        }
+&nbsp;
+        $elm.on('mousedown', function(event, args) {
+          if (event.originalEvent) { event = event.originalEvent; }
+          event.stopPropagation();
+&nbsp;
+          // Get the left offset of the grid
+          gridLeft = uiGridCtrl.grid.element[0].offsetLeft;
+&nbsp;
+          // Get the starting X position, which is the X coordinate of the click minus the grid's offset
+          startX = event.clientX - gridLeft;
+&nbsp;
+          // Append the resizer overlay
+          uiGridCtrl.grid.element.append(resizeOverlay);
+&nbsp;
+          // Place the resizer overlay at the start position
+          resizeOverlay.css({ left: startX });
+&nbsp;
+          // Add handlers for mouse move and up events
+          $document.on('mouseup', mouseup);
+          $document.on('mousemove', mousemove);
+        });
+&nbsp;
+        // On doubleclick, resize to fit all rendered cells
+        $elm.on('dblclick', function(event, args) {
+          event.stopPropagation();
+&nbsp;
+          var col = $scope.col;
+          var otherCol, multiplier;
+&nbsp;
+          // If we're the left-positioned resizer then we need to resize the column to the left of our column, and not our column itself
+          <span class="missing-if-branch" title="if path not taken" >I</span>if ($scope.position === 'left') {
+<span class="cstat-no" title="statement not covered" >            col = uiGridCtrl.grid.renderedColumns[$scope.renderIndex - 1];</span>
+<span class="cstat-no" title="statement not covered" >            otherCol = $scope.col;</span>
+<span class="cstat-no" title="statement not covered" >            multiplier = 1;</span>
+          }
+          else <span class="missing-if-branch" title="else path not taken" >E</span>if ($scope.position === 'right') {
+            otherCol = uiGridCtrl.grid.renderedColumns[$scope.renderIndex + 1];
+            multiplier = -1;
+          }
+&nbsp;
+          // Go through the rendered rows and find out the max size for the data in this column
+          var maxWidth = 0;
+          var xDiff = 0;
+&nbsp;
+          // Get the parent render container element
+          var renderContainerElm = gridUtil.closestElm($elm, '.ui-grid-render-container');
+&nbsp;
+          // Get the cell contents so we measure correctly. For the header cell we have to account for the sort icon and the menu buttons, if present
+          var cells = renderContainerElm.querySelectorAll('.uiGridCol' + col.index + ' .ui-grid-cell-contents');
+          Array.prototype.forEach.call(cells, function (cell) {
+              // Get the cell width
+              // $log.debug('width', gridUtil.elementWidth(cell));
+&nbsp;
+              // Account for the menu button if it exists
+              var menuButton;
+              if (angular.element(cell).parent().hasClass('ui-grid-header-cell')) {
+                menuButton = angular.element(cell).parent()[0].querySelectorAll('.ui-grid-column-menu-button');
+              }
+&nbsp;
+              gridUtil.fakeElement(cell, {}, function(newElm) {
+                // Make the element float since it's a div and can expand to fill its container
+                var e = angular.element(newElm);
+                e.attr('style', 'float: left');
+&nbsp;
+                var width = gridUtil.elementWidth(e);
+&nbsp;
+                if (menuButton) {
+                  var menuButtonWidth = gridUtil.elementWidth(menuButton);
+                  width = width + menuButtonWidth;
+                }
+&nbsp;
+                if (width &gt; maxWidth) {
+                  maxWidth = width;
+                  xDiff = maxWidth - width;
+                }
+              });
+            });
+&nbsp;
+          // If the new width is less than the minimum width, make it the minimum width
+          <span class="missing-if-branch" title="if path not taken" >I</span>if (col.colDef.minWidth &amp;&amp; maxWidth &lt; col.colDef.minWidth) {
+<span class="cstat-no" title="statement not covered" >            maxWidth = col.colDef.minWidth;</span>
+          }
+          else <span class="missing-if-branch" title="if path not taken" >I</span>if (!col.colDef.minWidth &amp;&amp; columnBounds.minWidth &amp;&amp; maxWidth &lt; columnBounds.minWidth) {
+<span class="cstat-no" title="statement not covered" >            maxWidth = columnBounds.minWidth;</span>
+          }
+          // 
+          if (col.colDef.maxWidth &amp;&amp; maxWidth &gt; col.colDef.maxWidth) {
+            maxWidth = col.colDef.maxWidth;
+          }
+&nbsp;
+          col.colDef.width = maxWidth;
+          
+          // All other columns because fixed to their drawn width, if they aren't already
+          resizeAroundColumn(col);
+&nbsp;
+          buildColumnsAndRefresh(xDiff);
+        });
+&nbsp;
+        $elm.on('$destroy', function() {
+          $elm.off('mousedown');
+          $elm.off('dblclick');
+          $document.off('mousemove', mousemove);
+          $document.off('mouseup', mouseup);
+        });
+      }
+    };
+&nbsp;
+    return resizer;
+  }]);
+&nbsp;
+})();</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Aug 11 2014 15:13:54 GMT-0700 (PDT)</div>
+</div>
+
+<script src="../../../prettify.js"></script>
+
+<script src="https://yui-s.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>

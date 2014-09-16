@@ -1,0 +1,137 @@
+<!-- index.html -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="zingClient">
+	<head>
+		<!-- META -->
+		<meta charset="utf-8">
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+				<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+					<title>ZingChart API Management</title>
+					<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular.js"></script><!-- load angular -->
+					<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular-resource.min.js"></script>
+					<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular-animate.min.js"></script>
+
+					<script src="/lib/bower_components/angular-material/angular-material.js"></script>
+					<script src="/lib/ng-grid/dist/release/ui-grid.js"></script>
+
+					<link rel="stylesheet" href="css/style.css">
+					<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+					<link rel="stylesheet" href="/lib/bower_components/angular-material/angular-material.css" >
+					<link rel="stylesheet" href="/lib/ng-grid/dist/release/ui-grid.css">
+								<style>
+									html 					{ overflow-y:scroll; }
+									#client-list 				{ margin-bottom:30px; }
+									.grid {
+										height:300px;
+									}
+
+									.menu-item {
+										background-color: #fff;
+										border-width: 0;
+										color: #333;
+										cursor: pointer;
+										display: block;
+										font-size: inherit;
+										line-height: 40px;
+										margin: 0;
+										max-height: 40px;
+										outline: 0 none;
+										padding: 0 28px;
+										position: relative;
+										text-align: left;
+										text-decoration: none;
+										transition-delay: 0s;
+										transition-duration: 0.2s;
+										transition-property: max-height, background-color;
+										transition-timing-function: linear;
+										width: 100%;
+										z-index: 1;
+									}
+
+									material-button.menu-item:hover, material-button.menu-item:focus{
+										background-color: #fff;
+										color:#999;
+									}
+
+									.menu-item.active {
+										background-color: #eee;
+										color: #4285f4;
+										font-weight: 700;
+									}
+
+									.material-input-group-theme-zing input {
+										border-color: #757575;
+									}
+
+									.material-input-group-theme-zing input[type="text"],input[type="email"],textarea{
+										width:350px;
+									}
+
+									.material-input-group-theme-zing label {
+										color: #757575;
+										font-size:14px;
+									}
+
+									.material-input-group-theme-zing.material-input-focused input {
+										border-color: #3f51b5;
+									}
+
+									.material-input-group-theme-zing.material-input-focused label {
+										color: #3f51b5;
+									}
+
+									.tabs-content{
+										padding-left:20px;
+										padding-right:20px;
+										padding-bottom:20px;
+									}
+
+
+								</style>
+
+
+							</head>
+							<body layout="vertical" layout-fill class="layout-demo full-layout-demo">
+								<div ng-include="'app/views/topnav.html'"></div>
+								<div ui-view style="height:100%" flex layout="vertical" layout-sm="horizontal"></div>
+
+								<script src="/js/angular-ui-router.js"></script>
+								<script src="/js/moment.js"></script>
+								<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+								<script src="app/app.js"></script>
+								<script src="app/admin/admin_controller.js"></script>
+								<script src="app/admin/admin_directive.js"></script>
+								<script src="app/clients/clients_controller.js"></script>
+								<script src="app/clients/clients_service.js"></script>
+								<script src="app/clients/clients_directive.js"></script>
+								<script src="app/users/users_controller.js"></script>
+								<script src="app/users/users_directive.js"></script>
+								<script src="app/users/users_service.js"></script>
+								<script src="app/groups/groups_controller.js"></script>
+								<script src="app/groups/groups_directive.js"></script>
+								<script src="app/groups/groups_service.js"></script>
+								<script src="app/charts/charts_controller.js"></script>
+								<script src="app/charts/charts_directive.js"></script>
+								<script src="app/charts/charts_service.js"></script>
+								<script src="app/support/support_controller.js"></script>
+								<script src="app/support/support_service.js"></script>
+								<script src="app/editor/editor_controller.js"></script>
+
+
+								<!-- ace-editor -->
+								<script type="text/javascript" src="lib/bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+								<script type="text/javascript" src="lib/bower_components/angular-ui-ace/ui-ace.js"></script>
+								<!-- jquery -->
+								<script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>	
+								<!-- bootstrap -->
+								<script src= "lib/bower_components/bootstrap/dist/js/bootstrap.min.js" rel="stylesheet"></script>
+								<link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+
+								<!-- ZingChart Library -->
+								<script src="lib/zingchart-html5-min.js"></script>
+
+							</body>
+						</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<title>Simple app</title>
+<script src="/lib/material/bower_components/jquery/dist/jquery.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.js"></script><!-- load angular -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular-animate.min.js"></script>
+<script src="/lib/material/config/lib/angular-animate-sequence/angular-animate-sequence.js"></script>
+<script src="/lib/material/config/lib/angular-animate-sequence/angular-animate-stylers.js"></script>
+<script src="/lib/material/dist/material-design.js"></script>
+<script src="/lib/ng-grid/dist/release/ui-grid.js"></script>
+        
+<script src="testapp2.js"></script>
+<link rel="stylesheet" href="/lib/material/dist/material-design.css" >
+<link rel="stylesheet" href="/lib/ng-grid/dist/release/ui-grid.css">
+
+    <style>
+        .full {
+            width: 100%;
+            height: 100%;
+          }
+          
+          material-content .material-content {
+            padding: 20px;
+        }
+    </style>
+</head>
+    <body ng-controller="AppCtrl" layout="vertical" layout-fill class="layout-demo full-layout-demo">
+
+  <material-toolbar class="material-theme-light">
+      <div class="material-toolbar-tools" style="margin-left: 9px">Components</div>
+    </material-toolbar>
+
+  <div flex layout="vertical" layout-sm="horizontal">
+
+      <material-sidenav class="material-sidenav-left material-whiteframe-z3" component-id="left" ng-click="goHome()">
+    <div layout="vertical" layout-fill>
+      <material-content>
+        <material-list>
+          <material-item><div ng-cloak class="material-tile-content">Item 1</div></material-item>
+          <material-item><div ng-cloak class="material-tile-content">Clients</div></material-item>
+          <material-item><div ng-cloak class="material-tile-content">Users</div></material-item>
+          <material-item><div ng-cloak class="material-tile-content">Charts</div></material-item>
+        </material-list>
+      </material-content>
+    </div>
+  </material-sidenav>
+    
+    <main flex style="margin-left:15px;margin-right:15px;">
+          <div ui-grid="gridOptions" class="grid" id="clientGrid"></div>  
+        
+    
+    
+    <button class="material-button material-button-colored" ng-click="dialog($event)">
+    Open a Dialog
+  </button>
+
+    
+        <material-checkbox>
+        <input type="checkbox" ng-model="data.cb1">
+        Checkbox 1: {{ data.cb1 }}
+      </material-checkbox>
+    
+      <material-checkbox>
+        <input type="checkbox" ng-model="data.cb2" ng-true-value="yup" ng-false-value="nope">
+        Checkbox 2: {{ data.cb2 }}
+      </material-checkbox>
+      
+      <a class="material-button material-button-colored" >HI</a>
+      
+     <material-tabs>
+      <material-tab label="My Tab Content">
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+          totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+          dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+          sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+        </p>
+      </material-tab>
+      <material-tab label="Tab 2">
+        <p>
+          Content 2
+          <div ng-repeat="ip in myData">
+                            <div>
+                            <input type="text" ng-model="ip.firstName">
+                              <span ng-click="removeIp($index)" class="input-group-addon">Remove</span>
+                            </div>
+                          </div>
+        </p>
+      </material-tab>
+     </material-tabs>
+      
+      
+   <material-tabs selected="selectedIndex" style="background-color: #4285F4;">
+        <material-tab label="ITEM ONE"></material-tab>
+        <material-tab label="ITEM TWO"></material-tab>
+        <material-tab label="ITEM THREE"></material-tab>
+        <material-tab label="ITEM FOUR"></material-tab>
+    </material-tabs>
+      <div  ng-switch on="selectedIndex">
+        <div ng-switch-when="0">
+            View for Item #1<br/>
+            Selection index = 0
+        </div>
+        <div  ng-switch-when="1">
+            View for Item #2<br/>
+            Selection index = 1
+        </div>
+        <div ng-switch-when="2">
+            
+            <div ng-repeat="ip in myData">
+                            <div>
+                            <input type="text" ng-model="ip.firstName">
+                              <span ng-click="removeIp($index)" class="input-group-addon">Remove</span>
+                            </div>
+                          </div>
+        </div>
+        <div ng-switch-when="3">
+            View for Item #4<br/>
+            Selection index = 3
+        </div>
+    </div>
+      
+      
+  
+    </main>
+
+  </div>
+
+  <footer>
+    Footer
+  </footer>
+
+
+
+    
+    
+
+1.  Get Popup Insides to be materials
+1a.  Get General to display pretty
+1b.  Get IPs to add okay.
+1c.  Get buttons to display properly
+1d.  Get access to display properly
+1e.  Get buttons to work
+3.  Copy all to users
+4.  Copy all to groups
+5.  Copy all to charts
+
+
+</body>
+</html>

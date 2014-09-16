@@ -1,0 +1,20 @@
+<input type="text" ng-model="search" class="search-query" placeholder="Search"><br>
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th>Group</th>
+              <th>Created</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="group in groups | filter:search | orderBy:'name'">
+              <td>{{group.name}}</td>
+              <td>{{group.created | date}}</td>
+              <td>
+                <a class="btn btn-primary btn-xs" ng-click="openGroup(group)"><i class="icon-white glyphicon glyphicon-pencil"></i> Edit</a>
+                <a class="btn btn-danger btn-xs" ng-click="removeGroup(group._id)"><i class="icon-white glyphicon glyphicon-remove"></i> Delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <a class="material-button material-button-colored" ng-click="openGroup()">Add New Group</a>

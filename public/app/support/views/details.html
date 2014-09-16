@@ -1,0 +1,24 @@
+
+<h2>Support Request</h2>
+              <form name="supportForm">
+                     <material-input-group class="material-input-group-theme-zing">
+                        <label for="title">Request Title</label>
+                        <material-input id="title" type="text" ng-model="support.title">
+                      </material-input-group><br>
+                     <div class="material-input-group-theme-zing">
+                        <label>Description</label>
+                        <textarea id="description" ng-model="support.description" rows="3"></textarea>
+                      </div>
+                     <div class="material-input-group-theme-zing">
+                        <label>JSON Configuration</label>
+                        <textarea id="json" ng-model="support.json" rows="5"></textarea>
+                      </div>
+                      <div layout="horizontal">
+                         <material-button ng-click="add()" class="material-button-colored material-button-raised"> Add</material-button>&nbsp;
+                         <material-button ng-click="reset()" class="material-button-raised">Reset</material-button>
+                      </div>
+                      
+                       
+              </form>
+        </div>
+          

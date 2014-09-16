@@ -1,0 +1,71 @@
+<h1><code ng:non-bindable="">GridOptions</code>
+<span class="hint">(class in module <code ng:non-bindable="">ui.grid</code>
+)</span>
+</h1>
+<div><h2 id="Description">Description</h2>
+<div class="description"><p>Default GridOptions class.  GridOptions are defined by the application developer and overlaid
+over this object.</p></div>
+<h2 id="Usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">GridOptions();</pre>
+</div>
+<div class="member method"><h2 id="Methods">Methods</h2>
+<ul class="methods"><li><h3 id="rowEquality">rowEquality(entityA, entityB)</h3>
+<div class="rowequality"><p>By default, rows are compared using object equality.  This option can be overridden
+to compare on any data item property or function</p><h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">entityA – {object} – </code>
+<p>First Data Item to compare</p></li>
+<li><code ng:non-bindable="">entityB – {object} – </code>
+<p>Second Data Item to compare</p></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="Properties">Properties</h2>
+<ul class="properties"><li><h3 id="columnDefs">columnDefs</h3>
+<div class="columndefs"><p>(optional) Array of columnDef objects.  Only required property is name.
+<em>field property can be used in place of name for backwards compatibilty with 2.x</em></p><h4 id="Example">Example</h4>
+<div class="example"><p>var columnDefs = [{name:'field1'}, {name:'field2'}];</p></div>
+</div>
+</li>
+<li><h3 id="data">data</h3>
+<div class="data"><p>Array of data to be rendered to grid.  Array can contain complex objects</p></div>
+</li>
+<li><h3 id="enableRowHashing">enableRowHashing</h3>
+<div class="enablerowhashing"><p>(optional) True by default. When enabled, this setting allows uiGrid to add
+<code>$$hashKey</code>-type properties (similar to Angular) to elements in the <code>data</code> array. This allows
+the grid to maintain state while vastly speeding up the process of altering <code>data</code> by adding/moving/removing rows.</p>
+
+<p>Note that this DOES add properties to your data that you may not want, but they are stripped out when using <code>angular.toJson()</code>. IF
+you do not want this at all you can disable this setting but you will take a performance hit if you are using large numbers of rows
+and are altering the data set often.</p></div>
+</li>
+<li><h3 id="excludeProperties">excludeProperties</h3>
+<div class="excludeproperties"><p>(optional) Array of property names in data to ignore when auto-generating column names. defaults to ['$$hashKey']
+If columnDefs is defined, this will be ignored.</p></div>
+</li>
+<li><h3 id="getRowIdentity">getRowIdentity</h3>
+<div class="getrowidentity"><p>(optional) This function returns the identity value uniquely identifying this row.</p>
+
+<p>By default it returns the <code>$$hashKey</code> property but can be overridden to use any property or set of properties you want.</p></div>
+</li>
+<li><h3 id="rowIdentity">rowIdentity</h3>
+<div class="rowidentity"><p>(optional) This function is used to get and, if necessary, set the value uniquely identifying this row.</p>
+
+<p>By default it returns the <code>$$hashKey</code> property if it exists. If it doesn't it uses gridUtil.nextUid() to generate one</p></div>
+</li>
+</ul>
+</div>
+<h2 id="Example">Example</h2>
+<div class="example"><p>To provide default options for all of the grids within your application, use an angular
+decorator to modify the GridOptions factory.
+<pre class="prettyprint linenums">app.config(function($provide){
+   $provide.decorator('GridOptions',function($delegate){
+     return function(){
+       var defaultOptions = new $delegate();
+       defaultOptions.excludeProperties = ['id' ,'$$hashKey'];
+       return defaultOptions;
+     };
+   })
+ })</pre></div>
+</div>

@@ -1,0 +1,61 @@
+* { font-size:9pt;font-family:'Lucida Sans Unicode',Inconsolata,Arial; }
+body { margin:10px;padding:10px; }
+h1 { font-size:31pt;padding:10px 0px;margin:0px;letter-spacing:-2px; }
+h2 { font-size:13pt;padding:10px 0px;margin:0px; }
+
+table { width:100%;border-collapse:collapse; }
+table td { vertical-align:top;padding:10px;border-bottom:1px solid #ccc;border-left:1px solid #eee; }
+table th { padding:10px;text-align:left;background-color:#ececec;border-bottom:1px solid #ccc;border-left:1px solid #ccc; }
+
+table td.row { font-size:11pt;border-bottom:1px solid #ccc;border-left-width:0px !important; }
+td.row * { font-size:11pt; }
+
+div.block { padding:10px;background-color:#f3f9f3; }
+
+table tr.row1 td { background-color:#f3f9f3; }
+table tr.row2 td { background-color:#f3f3f9; }
+
+.method-section { background-color:#ececec;font-weight:bold;font-size:13pt;border-left-width:0px !important; }
+
+code { padding:2px;background-color:#FFF2CF;border-bottom:1px solid #EFC659;color:#000;font-size:12pt;font-weight:normal; }
+.required { color:#c00;font-weight:bold; }
+
+h3 { font-size:21pt;padding:10px 0px;color:#000;margin:50px 0 0 0;border-bottom:1px solid #ccc; }
+h3 * { font-size:21pt; }
+
+h4 { font-size:15pt;padding:10px 0px;color:#000;margin:30px 0 0 0;border-bottom:1px solid #ccc; }
+h5 { font-size:13pt;padding:10px 0px;color:#000;margin:10px 0 0 0 }
+
+.sample { margin: 10px 0 10px 0;font-size:8pt;color:#00c; }
+
+ul { padding-left:35px; }
+li { margin:15px 5px; }
+
+.col1 { width:10%;white-space:nowrap;border-left-width:0px !important; }
+.col2 { width:5%;white-space:nowrap; }
+.col3 { width:25%; }
+.col4 { width:60%; }
+
+.col12 { border-left-width:0px !important; }
+
+.toc ul { padding-left:30px; }
+.toc li { font-size:11pt;list-style:disc; }
+.toc li * { font-size:11pt; }
+h3 a { font-size:11pt;padding:5px 10px 5px 50px; }
+
+/* --------------- */
+
+#page {
+	width:780px;
+	margin:0px auto;
+	padding:10px;
+	border-left:1px solid #ccc;
+	border-right:1px solid #ccc;
+}
+
+.note {
+	padding:10px;
+	border:1px dotted #ccc;
+	background:#eee;
+	color:#c00;
+}

@@ -1,0 +1,1123 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for js/core/directives/ui-grid-render-container.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../../../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("https://yui-s.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">js/core/directives/ui-grid-render-container.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">38.33% <small>(46 / 120)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">8.11% <small>(6 / 74)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">63.64% <small>(7 / 11)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">39.66% <small>(46 / 116)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">js/core/directives/</a> &#187; ui-grid-render-container.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">54</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54</span>
+<span class="cline-any cline-yes">54</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54</span>
+<span class="cline-any cline-yes">54</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54</span>
+<span class="cline-any cline-yes">54</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54</span>
+<span class="cline-any cline-yes">54</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function () {
+  'use strict';
+&nbsp;
+  var module = angular.module('ui.grid');
+  
+  module.directive('uiGridRenderContainer', ['$log', '$timeout', 'uiGridConstants', 'gridUtil',
+    function($log, $timeout, uiGridConstants, GridUtil) {
+    return {
+      replace: true,
+      transclude: true,
+      templateUrl: 'ui-grid/uiGridRenderContainer',
+      require: ['^uiGrid', 'uiGridRenderContainer'],
+      scope: {
+        containerId: '=',
+        rowContainerName: '=',
+        colContainerName: '=',
+        bindScrollHorizontal: '=',
+        bindScrollVertical: '=',
+        enableScrollbars: '='
+      },
+      controller: 'uiGridRenderContainer as RenderContainer',
+      compile: function () {
+        return {
+          pre: function prelink($scope, $elm, $attrs, controllers) {
+            $log.debug('render container ' + $scope.containerId + ' pre-link');
+&nbsp;
+            var uiGridCtrl = controllers[0];
+            var containerCtrl = controllers[1];
+&nbsp;
+            var grid = $scope.grid = uiGridCtrl.grid;
+&nbsp;
+            // Verify that the render container for this element exists
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!$scope.rowContainerName) {
+<span class="cstat-no" title="statement not covered" >              throw "No row render container name specified";</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!$scope.colContainerName) {
+<span class="cstat-no" title="statement not covered" >              throw "No column render container name specified";</span>
+            }
+&nbsp;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!grid.renderContainers[$scope.rowContainerName]) {
+<span class="cstat-no" title="statement not covered" >              throw "Row render container '" + $scope.rowContainerName + "' is not registered.";</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!grid.renderContainers[$scope.colContainerName]) {
+<span class="cstat-no" title="statement not covered" >              throw "Column render container '" + $scope.colContainerName + "' is not registered.";</span>
+            }
+&nbsp;
+            var rowContainer = $scope.rowContainer = grid.renderContainers[$scope.rowContainerName];
+            var colContainer = $scope.colContainer = grid.renderContainers[$scope.colContainerName];
+            
+            containerCtrl.containerId = $scope.containerId;
+            containerCtrl.rowContainer = rowContainer;
+            containerCtrl.colContainer = colContainer;
+          },
+          post: function postlink($scope, $elm, $attrs, controllers) {
+            $log.debug('render container ' + $scope.containerId + ' post-link');
+&nbsp;
+            var uiGridCtrl = controllers[0];
+            var containerCtrl = controllers[1];
+&nbsp;
+            var grid = uiGridCtrl.grid;
+            var rowContainer = containerCtrl.rowContainer;
+            var colContainer = containerCtrl.colContainer;
+&nbsp;
+            // Put the container name on this element as a class
+            $elm.addClass('ui-grid-render-container-' + $scope.containerId);
+&nbsp;
+            // Bind to left/right-scroll events
+            <span class="missing-if-branch" title="else path not taken" >E</span>if ($scope.bindScrollHorizontal || <span class="branch-1 cbranch-no" title="branch not covered" >$scope.bindScrollVertical)</span> {
+              $scope.$on(uiGridConstants.events.GRID_SCROLL, scrollHandler);
+            }
+&nbsp;
+<span class="fstat-no" title="function not covered" >            function scrollHandler (evt, args) {</span>
+              // Vertical scroll
+<span class="cstat-no" title="statement not covered" >              if (args.y &amp;&amp; $scope.bindScrollVertical) {</span>
+<span class="cstat-no" title="statement not covered" >                containerCtrl.prevScrollArgs = args;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                var scrollLength = (rowContainer.getCanvasHeight() - rowContainer.getViewportHeight());</span>
+&nbsp;
+                // Add the height of the native horizontal scrollbar, if it's there. Otherwise it will mask over the final row
+<span class="cstat-no" title="statement not covered" >                if (grid.horizontalScrollbarHeight &amp;&amp; grid.horizontalScrollbarHeight &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >                  scrollLength = scrollLength + grid.horizontalScrollbarHeight;</span>
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                var oldScrollTop = containerCtrl.viewport[0].scrollTop;</span>
+                
+<span class="cstat-no" title="statement not covered" >                var scrollYPercentage;</span>
+<span class="cstat-no" title="statement not covered" >                if (typeof(args.y.percentage) !== 'undefined' &amp;&amp; args.y.percentage !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                  scrollYPercentage = args.y.percentage;</span>
+                }
+                else <span class="cstat-no" title="statement not covered" >if (typeof(args.y.pixels) !== 'undefined' &amp;&amp; args.y.pixels !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                  scrollYPercentage = args.y.percentage = (oldScrollTop + args.y.pixels) / scrollLength;</span>
+                  // $log.debug('y.percentage', args.y.percentage);
+                }
+                else {
+<span class="cstat-no" title="statement not covered" >                  throw new Error("No percentage or pixel value provided for scroll event Y axis");</span>
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                var newScrollTop = Math.max(0, scrollYPercentage * scrollLength);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                containerCtrl.viewport[0].scrollTop = newScrollTop;</span>
+                
+                // TOOD(c0bra): what's this for?
+                // grid.options.offsetTop = newScrollTop;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                containerCtrl.prevScrollArgs.y.pixels = newScrollTop - oldScrollTop;</span>
+              }
+&nbsp;
+              // Horizontal scroll
+<span class="cstat-no" title="statement not covered" >              if (args.x &amp;&amp; $scope.bindScrollHorizontal) {</span>
+<span class="cstat-no" title="statement not covered" >                containerCtrl.prevScrollArgs = args;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                var scrollWidth = (colContainer.getCanvasWidth() - colContainer.getViewportWidth());</span>
+&nbsp;
+                // var oldScrollLeft = containerCtrl.viewport[0].scrollLeft;
+<span class="cstat-no" title="statement not covered" >                var oldScrollLeft = GridUtil.normalizeScrollLeft(containerCtrl.viewport);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                var scrollXPercentage;</span>
+<span class="cstat-no" title="statement not covered" >                if (typeof(args.x.percentage) !== 'undefined' &amp;&amp; args.x.percentage !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                  scrollXPercentage = args.x.percentage;</span>
+                }
+                else <span class="cstat-no" title="statement not covered" >if (typeof(args.x.pixels) !== 'undefined' &amp;&amp; args.x.pixels !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                  scrollXPercentage = args.x.percentage = (oldScrollLeft + args.x.pixels) / scrollWidth;</span>
+                }
+                else {
+<span class="cstat-no" title="statement not covered" >                  throw new Error("No percentage or pixel value provided for scroll event X axis");</span>
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                var newScrollLeft = Math.max(0, scrollXPercentage * scrollWidth);</span>
+                
+                // uiGridCtrl.adjustScrollHorizontal(newScrollLeft, scrollXPercentage);
+&nbsp;
+                // containerCtrl.viewport[0].scrollLeft = newScrollLeft;
+<span class="cstat-no" title="statement not covered" >                containerCtrl.viewport[0].scrollLeft = GridUtil.denormalizeScrollLeft(containerCtrl.viewport, newScrollLeft);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                containerCtrl.prevScrollLeft = newScrollLeft;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (containerCtrl.headerViewport) {</span>
+                  // containerCtrl.headerViewport.scrollLeft = newScrollLeft;
+<span class="cstat-no" title="statement not covered" >                  containerCtrl.headerViewport.scrollLeft = GridUtil.denormalizeScrollLeft(containerCtrl.headerViewport, newScrollLeft);</span>
+                }
+&nbsp;
+                // uiGridCtrl.grid.options.offsetLeft = newScrollLeft;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                containerCtrl.prevScrollArgs.x.pixels = newScrollLeft - oldScrollLeft;</span>
+              }
+            }
+&nbsp;
+            // Scroll the render container viewport when the mousewheel is used
+            $elm.bind('wheel mousewheel DomMouseScroll MozMousePixelScroll', <span class="fstat-no" title="function not covered" >function(evt) {</span>
+              // use wheelDeltaY
+<span class="cstat-no" title="statement not covered" >              evt.preventDefault();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              var newEvent = GridUtil.normalizeWheelEvent(evt);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              var args = { target: $elm };</span>
+<span class="cstat-no" title="statement not covered" >              if (newEvent.deltaY !== 0) {</span>
+<span class="cstat-no" title="statement not covered" >                var scrollYAmount = newEvent.deltaY * -120;</span>
+&nbsp;
+                // Get the scroll percentage
+<span class="cstat-no" title="statement not covered" >                var scrollYPercentage = (containerCtrl.viewport[0].scrollTop + scrollYAmount) / (rowContainer.getCanvasHeight() - rowContainer.getViewportHeight());</span>
+&nbsp;
+                // Keep scrollPercentage within the range 0-1.
+<span class="cstat-no" title="statement not covered" >                if (scrollYPercentage &lt; 0) { <span class="cstat-no" title="statement not covered" >scrollYPercentage = 0; </span>}</span>
+                else <span class="cstat-no" title="statement not covered" >if (scrollYPercentage &gt; 1) { <span class="cstat-no" title="statement not covered" >scrollYPercentage = 1; </span>}</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                args.y = { percentage: scrollYPercentage, pixels: scrollYAmount };</span>
+              }
+<span class="cstat-no" title="statement not covered" >              if (newEvent.deltaX !== 0) {</span>
+<span class="cstat-no" title="statement not covered" >                var scrollXAmount = newEvent.deltaX * -120;</span>
+&nbsp;
+                // Get the scroll percentage
+<span class="cstat-no" title="statement not covered" >                var scrollLeft = GridUtil.normalizeScrollLeft(containerCtrl.viewport);</span>
+<span class="cstat-no" title="statement not covered" >                var scrollXPercentage = (scrollLeft + scrollXAmount) / (colContainer.getCanvasWidth() - colContainer.getViewportWidth());</span>
+&nbsp;
+                // Keep scrollPercentage within the range 0-1.
+<span class="cstat-no" title="statement not covered" >                if (scrollXPercentage &lt; 0) { <span class="cstat-no" title="statement not covered" >scrollXPercentage = 0; </span>}</span>
+                else <span class="cstat-no" title="statement not covered" >if (scrollXPercentage &gt; 1) { <span class="cstat-no" title="statement not covered" >scrollXPercentage = 1; </span>}</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                args.x = { percentage: scrollXPercentage, pixels: scrollXAmount };</span>
+              }
+              
+<span class="cstat-no" title="statement not covered" >              uiGridCtrl.fireScrollingEvent(args);</span>
+            });
+            
+            // TODO(c0bra): Handle resizing the inner canvas based on the number of elements
+            function update() {
+              var ret = '';
+&nbsp;
+              var canvasWidth = colContainer.getCanvasWidth();
+              var viewportWidth = colContainer.getViewportWidth();
+&nbsp;
+              var canvasHeight = rowContainer.getCanvasHeight();
+              var viewportHeight = rowContainer.getViewportHeight();
+&nbsp;
+              var headerViewportWidth = colContainer.getHeaderViewportWidth();
+              
+              // Set canvas dimensions
+              ret += '\n .grid' + uiGridCtrl.grid.id + ' .ui-grid-render-container-' + $scope.containerId + ' .ui-grid-canvas { width: ' + canvasWidth + 'px; height: ' + canvasHeight + 'px; }';
+              ret += '\n .grid' + uiGridCtrl.grid.id + ' .ui-grid-render-container-' + $scope.containerId + ' .ui-grid-header-canvas { width: ' + canvasWidth + 'px; }';
+              
+              ret += '\n .grid' + uiGridCtrl.grid.id + ' .ui-grid-render-container-' + $scope.containerId + ' .ui-grid-viewport { width: ' + viewportWidth + 'px; height: ' + viewportHeight + 'px; }';
+              ret += '\n .grid' + uiGridCtrl.grid.id + ' .ui-grid-render-container-' + $scope.containerId + ' .ui-grid-header-viewport { width: ' + headerViewportWidth + 'px; }';
+&nbsp;
+              // Update 
+&nbsp;
+              return ret;
+            }
+            
+            uiGridCtrl.grid.registerStyleComputation({
+              priority: 6,
+              func: update
+            });
+          }
+        };
+      }
+    };
+&nbsp;
+  }]);
+&nbsp;
+  module.controller('uiGridRenderContainer', ['$scope', function ($scope) {
+    var self = this;
+&nbsp;
+    self.rowStyle = <span class="fstat-no" title="function not covered" >function (index) {</span>
+<span class="cstat-no" title="statement not covered" >      var styles = {};</span>
+      
+<span class="cstat-no" title="statement not covered" >      if (!$scope.disableRowOffset) {</span>
+<span class="cstat-no" title="statement not covered" >        if (index === 0 &amp;&amp; self.currentTopRow !== 0) {</span>
+          // The row offset-top is just the height of the rows above the current top-most row, which are no longer rendered
+<span class="cstat-no" title="statement not covered" >          var hiddenRowWidth = ($scope.rowContainer.currentTopRow) * $scope.grid.options.rowHeight;</span>
+&nbsp;
+          // return { 'margin-top': hiddenRowWidth + 'px' };
+<span class="cstat-no" title="statement not covered" >          styles['margin-top'] = hiddenRowWidth + 'px';</span>
+        }
+      }
+      
+<span class="cstat-no" title="statement not covered" >      if (!$scope.disableColumnOffset &amp;&amp; $scope.colContainer.currentFirstColumn !== 0) {</span>
+<span class="cstat-no" title="statement not covered" >        if ($scope.grid.isRTL()) {</span>
+<span class="cstat-no" title="statement not covered" >          styles['margin-right'] = $scope.colContainer.columnOffset + 'px';</span>
+        }
+        else {
+<span class="cstat-no" title="statement not covered" >          styles['margin-left'] = $scope.colContainer.columnOffset + 'px';</span>
+        }
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      return styles;</span>
+    };
+&nbsp;
+    self.columnStyle = <span class="fstat-no" title="function not covered" >function (index) {</span>
+<span class="cstat-no" title="statement not covered" >      var self = this;</span>
+      
+<span class="cstat-no" title="statement not covered" >      if (!$scope.disableColumnOffset) {</span>
+<span class="cstat-no" title="statement not covered" >        if (index === 0 &amp;&amp; $scope.colContainer.currentFirstColumn !== 0) {</span>
+<span class="cstat-no" title="statement not covered" >          var offset = $scope.colContainer.columnOffset;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          if ($scope.grid.isRTL()) {</span>
+<span class="cstat-no" title="statement not covered" >            return { 'margin-right': offset + 'px' };</span>
+          }
+          else {
+<span class="cstat-no" title="statement not covered" >            return { 'margin-left': offset + 'px' }; </span>
+          }
+        }
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      return null;</span>
+    };
+  }]);
+&nbsp;
+})();</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Aug 11 2014 15:13:54 GMT-0700 (PDT)</div>
+</div>
+
+<script src="../../../prettify.js"></script>
+
+<script src="https://yui-s.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<material-dialog>
+   <material-toolbar class="material-theme-dark">
+        <div class="material-toolbar-tools">
+          <span class="material-flex">User Form</span>
+        </div>
+    </material-toolbar>
+        <div class="dialog-content">
+              <form name="userForm">
+                      <material-input-group class="material-input-group-theme-zing">
+                        <label for="username">User Name</label>
+                        <material-input id="username" type="text" ng-model="user.name">
+                      </material-input-group>
+                      
+                      <material-input-group class="material-input-group-theme-zing">
+                        <label for="email">Email</label>
+                        <material-input id="email" type="text" ng-model="user.email">
+                      </material-input-group>
+      
+                      
+              </form>
+        </div>
+          <div class="dialog-actions" layout="horizontal" layout-align="end">
+                
+                <material-button ng-click="save()" ng-show="user._id" ><i class="icon-white glyphicon glyphicon-plus"></i> Save</material-button>
+                <material-button ng-click="add()" ng-show="!user._id" > Add</material-button>
+                <material-button ng-click="cancel()">Cancel</material-button>
+          </div>
+</material-dialog>
