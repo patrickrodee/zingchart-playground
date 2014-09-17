@@ -17,7 +17,6 @@ angular.module('zingClient')
 
 	Charts.get({ id: $stateParams.id}, function (data) {	
 		console.log("success!: " + JSON.stringify(data));
-		$id = data._id;
 		$scope.chart = data;
 		$scope.code  = data["data"];
 		$scope.name  = data["name"]; 

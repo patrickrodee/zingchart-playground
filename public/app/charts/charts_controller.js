@@ -62,37 +62,11 @@ angular.module('zingClient')
 
 			}catch(exp){};
 		};
+		$scope.delete = function (id) {
+			//todo	
+		}
 
-		$scope.removeChart = function(chart) {
 
-			Charts.remove({id: chart.zingId, key: $scope.client.key, lockCode: chart.lockCode}, function(data){
-				$scope.charts = data;
-				$scope.alerts.push({
-						type: 'success',
-						msg: 'Chart Removed Successfully'
-				});
-			},
-			function(err){
-				console.log('Error: ' + data);
-				$scope.alerts.push({
-						type: 'error',
-						msg: "Chart was not removed."
-				});
-			});
-
-		};
-
-		$scope.openChart = function (chart) {
-
-			//chart = chart || {_clientId: $scope.clientId};
-
-			chart = '{"graphset":[]}';
-			$materialDialog({
-					templateUrl: '/app/charts/views/details.html',
-					controller: 'ChartInstanceCtrl',
-					locals: {chart:chart, clientKey: $scope.client.key, parentScope: $scope}
-			});
-		};	
 
 }])
 
