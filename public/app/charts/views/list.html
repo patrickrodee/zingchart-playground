@@ -12,7 +12,7 @@
 <!-- 			<td>{{chart.created | date}}</td> --> 
 <!-- 			<td> --> 
 <!-- 				<material-button ng-click="openChart(chart)"><i class="icon-white glyphicon glyphicon-pencil"></i> Edit</material-button> -->
-<!-- 				<material-button ng-click="removeChart(chart)"><i class="icon-white glyphicon glyphicon-remove"></i> Delete</material-button> -->
+<!-- 				<material-button ng-click="removechart(chart)"><i class="icon-white glyphicon glyphicon-remove"></i> delete</material-button> -->
 <!-- 			</td> -->
 <!-- 		</tr> -->
 <!-- 	</tbody> -->
@@ -41,12 +41,12 @@
 					<li class="chartList-item"ng-repeat="chart in charts | filter:search | orderBy:'name'">
 						<h3 class=header> 
 							<!--<a ng-click="isCollapsed = !isCollapsed">{{chart.name}}</a>-->
-							<a ui-sref="client.editor.ide({zingId: '{{chart.zingId}}'})">{{chart.name}}</a> 
+							<a ui-sref="client.editor.ide({id: '{{chart._id}}'})">{{chart.name}}</a> 
 							<small ng-click='renderChart(chart.data)'>
 								<i class="glyphicon glyphicon-play"></i>
 							</small></h3>
 						<p class="info"> {{chart.created | date}} </p>
-						<div ui-sref="client.editor.ide({zingId: '{{chart.zingId}}'})" id='{{chart.id}}' class="ace-editor" ng-model=chart.data readonly="true" ui-ace="{ 
+						<div ui-sref="client.editor.ide({id: '{{chart._id}}'})" id='{{chart.id}}' class="ace-editor" ng-model=chart.data readonly="true" ui-ace="{ 
 								useWrapMode : true, 
 								showGutter: false,
 								theme:'katzenmilch',

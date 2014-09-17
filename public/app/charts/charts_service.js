@@ -4,13 +4,41 @@ angular.module('zingClient')
 		return $resource('/api/charts/:id', {id : "@zingId"},
 			{
 				'update': {url: '/api/charts/:id/', method: 'PUT', isArray:true},
-				'get':    {method:'GET'},
+				'get':    {url: '/api/charts/:id/', method:'GET'},
 				'save':   {method:'POST', isArray:true},
 				'query':  {method:'GET', isArray:true},
 				'remove': {url: '/api/charts/:id/', method:'DELETE', isArray:true}
 		});
 }]);
+angular.module('zingClient')
+.factory('Chart', function($resource) {
+    return $resource('/api/charts/:id');
+});
 
+
+
+angular.module('zingClient').factory('ChartPost', ['$http', function ($http) {
+	return {
+		// Save Chart =================
+		saveChart: function (chartData) {
+			return $http.post('/api/postchart', chartData)
+				.success(function(data) {
+					console.log('Successfully saved!');
+				})
+		}
+	};
+}]);
+
+angular.module('zingClient').factory('ChartGet', ['$http', function($http){
+	return {
+		getChart: function (zingId) {
+			return $http.get('/api/charts/:id', zingId)
+				.success(function(data) {
+					console.log("Successfully got data: " + data);
+				});
+		}
+	};
+}]);
 
 var data1 = {
 "graphset":[

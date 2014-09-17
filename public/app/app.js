@@ -65,7 +65,7 @@ angular.module('zingClient', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMate
 			}
 	})
 	.state('client.editor.ide', {
-			url: '/ide/:zingId',
+			url: '/ide/:id',
 			views : {
 				'ide': {
 					templateUrl: '/app/editor/views/editor.ide.html',

@@ -130,9 +130,11 @@ angular.module('zingClient')
 
 }])
 
-.controller('ClientDetailCtrl', ['$scope', '$stateParams', 'Clients', function($scope, $stateParams, Clients){
+.controller('ClientDetailCtrl', ['$scope', '$stateParams', 'Clients', 'Charts', function($scope, $stateParams, Clients, Charts){
 
 		var clientId = $scope.clientId = $stateParams.clientId;
 		$scope.client = Clients.get({id: clientId});
-
+		Charts.query(function (data) {
+			$scope.client.charts = data; 
+		});
 }]);

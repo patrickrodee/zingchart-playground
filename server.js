@@ -132,10 +132,11 @@ app.get('/api/charts', function(req, res, next) {
 });
 
 // GET Chart by ID =============================================
-app.get('/api/charts/:id', function(req, res) {
-	Chart.findById(req.params.id, function(err, chart) {
-		if (err) return next(err);
-		res.send(chart);
+app.get('/api/charts/:id', function(req, res, next) {
+	Chart.findById( req.params.id, function(err, chart) {
+			if (err)
+				res.send(err);
+			res.json(chart);
 	  	});
 
 });
