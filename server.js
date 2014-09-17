@@ -9,16 +9,17 @@ var moment = require('moment');
 var passport = require('passport');
 var bcrypt = require('bcryptjs');
 var session = require('express-session');
+var methodOverride = require('method-override');
 
 // Mongoose Schema =========================================
 // 
 var chartSchema = new mongoose.Schema({
-  	zingId: 	Number,
+	zingId: 	Number,
 	name: 		String,
 	data: 		String,
 	created: 	Date,
 	creator: 	Number
- });
+});
 
 var userSchema = new mongoose.Schema({
 	_id: 		{type: Number, unique: true},
@@ -75,7 +76,7 @@ passport.deserializeUser(function(id, done) {
 });
 
 var app = express();
-
+var methodOverride = require('method-override');
 app.set('port', process.env.PORT || 3333);
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -85,6 +86,7 @@ app.use(session({ secret: 'zingnimbus' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride());
 
 app.use(function(req, res, next) {
 	if (req.user) {
@@ -134,15 +136,24 @@ app.get('/api/charts', function(req, res, next) {
 // GET Chart by ID =============================================
 app.get('/api/charts/:id', function(req, res, next) {
 	Chart.findById( req.params.id, function(err, chart) {
-			if (err)
-				res.send(err);
-			res.json(chart);
-	  	});
+		if (err)
+		res.send(err);
+	res.json(chart);
+	});
 
 });
 
+
+
+
 // POST a Chart =============================================
 app.post('/api/postchart', function(req, res, next) {
+
+	Chart.findById(reg.body._id, function(err, res){
+		if (res) {
+			res.delete();
+		}
+	});
 	var chart = new Chart({
 		zingId: 	req.body.zingId,
 		name: 		req.body.name,
@@ -158,14 +169,14 @@ app.post('/api/postchart', function(req, res, next) {
 
 // CATCH ALL ===============================
 app.get('*', function(req, res) {
-  res.redirect('/dashboard.html#/client/53627de45f3971e202ffe41f/charts');
+	res.redirect('/dashboard.html#/client/53627de45f3971e202ffe41f/charts');
 });
 
 app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.send(500,{ message: err.message });
+	console.error(err.stack);
+	res.send(500,{ message: err.message });
 });
 
 app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + app.get('port'));
+	console.log('Express server listening on port ' + app.get('port'));
 });

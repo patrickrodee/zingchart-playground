@@ -35,7 +35,7 @@ angular.module('zingClient')
 				_min = 3;
 
 			} else {
-				_min = 6;
+				_min = 12;
 
 			}
 

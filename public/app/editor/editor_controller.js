@@ -17,6 +17,7 @@ angular.module('zingClient')
 
 	Charts.get({ id: $stateParams.id}, function (data) {	
 		console.log("success!: " + JSON.stringify(data));
+		$id = data._id;
 		$scope.chart = data;
 		$scope.code  = data["data"];
 		$scope.name  = data["name"]; 
@@ -32,13 +33,17 @@ angular.module('zingClient')
 			}catch(exp){};
 		});
 
-		$scope.saveChart = function() {
-			var now = moment();
-			var tempZingId = Math.floor(Math.random() * 1000);
-			$scope.chart.name = $scope.name;
-			$scope.chart.data = $scope.code;
-			ChartPost.saveChart($scope.chart);
-		};
+		// $scope.saveChart = function() {
+		// 	data["data"] = $scope.code;
+		// 	data["name"] = $scope.name;
+		// 	Charts.update( {id: $stateParams.id}, data);
+		// };
+				$scope.saveChart = function() { // 			var now = moment();
+					var tempZingId = Math.floor(Math.random() * 1000);
+					$scope.chart.name = $scope.name;
+					$scope.chart.data = $scope.code;
+					ChartPost.saveChart($scope.chart);
+				};
 
 	});
 
