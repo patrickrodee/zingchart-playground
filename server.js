@@ -9,7 +9,6 @@ var moment = require('moment');
 var passport = require('passport');
 var bcrypt = require('bcryptjs');
 var session = require('express-session');
-var methodOverride = require('method-override');
 
 // Mongoose Schema =========================================
 // 
@@ -76,7 +75,6 @@ passport.deserializeUser(function(id, done) {
 });
 
 var app = express();
-var methodOverride = require('method-override');
 app.set('port', process.env.PORT || 3333);
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -86,7 +84,6 @@ app.use(session({ secret: 'zingnimbus' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(methodOverride());
 
 app.use(function(req, res, next) {
 	if (req.user) {
@@ -149,7 +146,7 @@ app.get('/api/charts/:id', function(req, res, next) {
 // POST a Chart =============================================
 app.post('/api/postchart', function(req, res, next) {
 
-	Chart.findById(reg.body._id, function(err, res){
+	Chart.findById(req.body._id, function(err, res){
 		if (res) {
 			res.delete();
 		}
