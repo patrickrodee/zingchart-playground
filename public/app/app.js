@@ -1,10 +1,10 @@
 // public/core.js
-angular.module('zingClient', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial', 'ui.grid', 'ui.ace'])
+angular.module('zingClient', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial', 'ui.ace'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 	//
 	// For any unmatched url, redirect to /state1
-	$urlRouterProvider.otherwise("/client/53627de45f3971e202ffe41f/charts");
+	$urlRouterProvider.otherwise("/client/1/charts");
 	//
 	$urlRouterProvider.when('/admin', '/admin/clients/list');
 	// Now set up the states
@@ -20,6 +20,7 @@ angular.module('zingClient', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMate
 			controller: 'ClientListCtrl'
 	})
 	.state('client', {
+			// url: '/client/:clientId',
 			url: '/client/:clientId',
 			templateUrl: '/app/clients/views/home.html',
 			controller: 'ClientDetailCtrl'

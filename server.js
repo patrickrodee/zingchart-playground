@@ -51,8 +51,8 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
 var User = mongoose.model('User', userSchema);
 var Chart = mongoose.model('Chart', chartSchema);
 
-mongoose.connect('localhost');
-//mongoose.connect("mongodb://zingchart-playground:zingnimbus1@ds035740.mongolab.com:35740/zingchart-demo-db");
+//mongoose.connect('localhost');
+mongoose.connect("mongodb://zingchart-playground:zingnimbus1@ds035740.mongolab.com:35740/zingchart-demo-db");
 mongoose.connection.on('error', function() {
 	console.error('MongoDB Connection Error');
 });

@@ -130,12 +130,12 @@ material-toolbar  {
 }
 
 .chartList-item {
-	margin-bottom:10px;
-	width: 350px;
+	margin: 35px;
+	width: 500px;
 }
 
 .chartList {
-	margin-left:100px;
+
 }
 
 .ace-editor {
@@ -178,5 +178,5 @@ material-toolbar  {
 
 .create-new-button {
 	background-color: #ea3f00;
-opacity: .9;
+	opacity: .9;
 }

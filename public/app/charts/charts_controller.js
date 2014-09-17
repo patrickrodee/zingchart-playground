@@ -6,9 +6,11 @@ angular.module('zingClient')
 				$('#chart_preview').height(height);
 				// center rendered chart inner container
 		// UNCOMMENT THIS! Had server connection issues so i'm using dummy data for now
-		$scope.charts = Charts.query().concat(_charts);
+		$scope.charts = Charts.query();
 
-
+		for (var i in $scope.charts) {
+			console.log(JSON.stringify($scope.charts[i].data) + '\n\n\n');
+		}
 		$scope.aceLoaded = function(_editor) {
 			// Editor part
 			var _renderer = _editor.renderer;

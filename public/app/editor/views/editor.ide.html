@@ -1,8 +1,11 @@
 <!-- editor.ide.html -->
- <button type="button" ng-click="saveChart()"><i class="fa fa-floppy-o"> SAVE</i></button>
- <input type="text" ng-model="chartName">
- <div id="editor-json" ng-model="code" class="ace-editor"  
- 		ui-ace="{mode: 'json', theme:'eclipse', 
- 		model: code}"> 
- </div>
+<ul class="nav navbar-nav pull-right" style="margin-bottom: -5px;">
+	<li><a ui-sref="editor.ide.api.categories.list"> <span class="glyphicon glyphicon-book"></span></a></li>
+	<li ng-click="saveChart()"><a><span class="glyphicon glyphicon-save"></span></a></li>
+</ul>
+<input type="text" ng-model="chartName" placeholder="Chart name">
+<div id="editor-json" ng-model="code" class="ace-editor"  
+		ui-ace="{mode: 'json', theme:'eclipse', 
+		model: code}"> 
+</div>
 
