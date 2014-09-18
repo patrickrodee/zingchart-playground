@@ -1,48 +1,47 @@
 <div class="container-fluid">
-<div class="row chartList-row">
-	<div class="col-md-6 chartList-col-1">
-		<div class="easy-demo">
-			<h2 class="subtitle thin"></h2>
-			<div class="easy chart" zingchart id='chart_preview' sc-data="chart_json"></div>
+	<div class="row chartList-row">
+		<div class="col-md-6 chartList-col-1">
+			<div class="easy-demo">
+				<h2 class="subtitle thin"></h2>
+				<div class="easy chart" zingchart id='chart_preview' sc-data="chart_json"></div>
+			</div>
 		</div>
+		<div class="col-md-6 chartList-col-2">
+			<ul class="chartList" style="list-style-type:none;">  <li>
+				<input type="text" ng-model="search" class="search-query chartList-search"
+				placeholder="Search"><br></li>
+				<!-- new chart item -->
+				<li style="height:45px;"></li>
+				<li class="chartList-item">
+				<material-button class="create-new-button" ui-sref="client.editor.ide()">
+				<a style="color:#fff;">Create new</a>
+				</material-button>
+				</li>
 
+				<li class="chartList-item" ng-repeat="chart in charts | filter:search | orderBy:'name'" ng-mouseenter="show = true" ng-mouseleave="show = false">
+				<h3 class=header> 
+					<a ui-sref="client.editor.ide({id: '{{chart._id}}'})">{{chart.name}}</a> 
+					<small ng-click='renderChart(chart.data)'>
+						<i class="glyphicon glyphicon-play"></i>
+					</small>
+					<small ng-show="show" ng-click='deleteChart(chart)' >
+						<material-button class="delete-button"
+						ng-click="deleteChart(chart)">
+						<a style="color:#fff;">delete</a>
+						</material-button>
+				</small></h3>
+				<p class="info"> {{chart.created | date}} </p>
+				<div ui-sref="client.editor.ide({id: '{{chart._id}}'})"
+					id='{{chart._id}}' class="ace-editor" ng-model=chart.data readonly="true" ui-ace="{ 
+					useWrapMode : true, 
+					showGutter: false,
+					theme:'kuroir',
+					mode: 'json',
+					onLoad: aceLoaded }" > </div>
+				</li>
+			</ul>
+		</div>
 	</div>
-	<div class="col-md-6 chartList-col-2">
-		<ul class="chartList" style="list-style-type:none;">  <li>
-			<input type="text" ng-model="search" class="search-query chartList-search"
-			placeholder="Search"><br></li>
-			<!-- new chart item -->
-			<li style="height:45px;"></li>
-			<li class="chartList-item">
-			<material-button class="create-new-button" ui-sref="client.editor.ide()">
-			<a style="color:#fff;">Create new</a>
-			</material-button>
-			</li>
-
-			<li class="chartList-item" ng-repeat="chart in charts | filter:search | orderBy:'name'" ng-mouseenter="show = true" ng-mouseleave="show = false">
-			<h3 class=header> 
-				<a ui-sref="client.editor.ide({id: '{{chart._id}}'})">{{chart.name}}</a> 
-				<small ng-click='renderChart(chart.data)'>
-					<i class="glyphicon glyphicon-play"></i>
-				</small>
-				<small ng-show="show" ng-click='deleteChart(chart)' >
-					<material-button class="delete-button" ui-sref="client.editor.ide()">
-					<a style="color:#fff;">delete</a>
-					</material-button>
-			</small></h3>
-			<p class="info"> {{chart.created | date}} </p>
-			<div ui-sref="client.editor.ide({id: '{{chart._id}}'})" id='{{chart.id}}' class="ace-editor" ng-model=chart.data readonly="true" ui-ace="{ 
-				useWrapMode : true, 
-				showGutter: false,
-				theme:'kuroir',
-				mode: 'json',
-				onLoad: aceLoaded }" > </div>
-			</li>
-
-
-		</ul>
-	</div>
-</div>
 </div>
 
 <style>

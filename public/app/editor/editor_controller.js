@@ -2,7 +2,7 @@
 
 angular.module('zingClient')
 
-.controller("EditorController", ['$scope', '$stateParams','Charts', 'ChartPost','Chart',  function($scope, $stateParams, Charts, ChartPost) {
+.controller("EditorController", ['$scope', '$stateParams','Charts', 'ChartPost', 'Resizer', function($scope, $stateParams, Charts, ChartPost, Resizer) {
 	$('#sidebar').hide();
 
 	$scope.aceLoad = function(_editor) {
@@ -12,18 +12,16 @@ angular.module('zingClient')
 			enableLiveAutocompletion: true
 		});
 	};
+	var chartId = $stateParams.id;
+	if(chartId) {
+	Charts.get({ id: $stateParams.id}, function (data,err) {	
 
-	Charts.get({ id: $stateParams.id}, function (data) {	
-		console.log("success!: " + JSON.stringify(data));
 		$scope.chart = data;
-		$scope.code  = data["data"];
-		$scope.name  = data["name"]; 
-
-		$scope.$watch('code', function(){
+		$scope.$watch('chart.data', function(){
 			try {
 				var height = $('#editor-ide').height() - $('#top-toolbar').height();
 				$('#editor-json').height(height);
-				$scope.json_to_render = {'data': $scope.code};
+				$scope.json_to_render = {'data': $scope.chart.data};
 				zingchart.exec('editor_preview', 'setdata', $scope.json_to_render);
 				var height = $('#editor-ide').height() - $('#top-toolbar').height();
 				$('#editor_preview').height(height);
@@ -31,12 +29,34 @@ angular.module('zingClient')
 		});
 
 		$scope.saveChart = function() { // 			var now = moment();
-			var tempZingId = Math.floor(Math.random() * 1000);
-			$scope.chart.name = $scope.name;
-			$scope.chart.data = $scope.code;
 			ChartPost.saveChart($scope.chart);
 		};
 
 	});
+	} else { 
+		var json =  { "graphset": []};
+		$scope.chart  = {
+			name: 'untitled',
+			data: JSON.stringify(json, null, '\t')
+		};
+		
+
+		$scope.$watch('chart.data', function(){
+			try {
+				var height = $('#editor-ide').height() - $('#top-toolbar').height();
+				$('#editor-json').height(height);
+				$scope.json_to_render = {'data': $scope.chart.data};
+				zingchart.exec('editor_preview', 'setdata', $scope.json_to_render);
+				var height = $('#editor-ide').height() - $('#top-toolbar').height();
+				$('#editor_preview').height(height);
+			}catch(exp){};
+		});
+
+		$scope.saveChart = function() { // 			var now = moment();
+			ChartPost.saveChart($scope.chart);
+		};
+
+
+	}
 
 }]);

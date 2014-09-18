@@ -141,7 +141,13 @@ app.get('/api/charts/:id', function(req, res, next) {
 });
 
 
-
+// DELETE Chart by ID =============================================
+app.del('/api/charts/:id', function(req, res){
+	Chart.findByIdAndRemove(req.params.id, function (err, chart) {
+		  if (err) return next(err)
+    res.send((result===1)?{msg:'success'}:{msg:'error'})
+	});
+});
 
 // POST a Chart =============================================
 app.post('/api/postchart', function(req, res, next) {

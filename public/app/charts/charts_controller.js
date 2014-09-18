@@ -41,8 +41,14 @@ angular.module('zingClient')
 
 		}catch(exp){};
 	};
-	$scope.delete = function (id) {
-		//todo	
+	$scope.deleteChart = function (chart) {
+		Charts.remove({id: chart._id}, function(err){
+			if (err) {
+				console.log("Error in deleting chart");
+				return err;
+			} 
+			console.log("Successful delete!");
+		});	
 	}
 }])
 
