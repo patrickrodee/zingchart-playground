@@ -2,9 +2,8 @@
 
 angular.module('zingClient')
 
-.controller("EditorController", ['$scope', '$stateParams','Charts', '_charts', 'ChartPost','Chart',  function($scope, $stateParams, Charts, _charts, ChartPost, ChartGet) {
+.controller("EditorController", ['$scope', '$stateParams','Charts', 'ChartPost','Chart',  function($scope, $stateParams, Charts, ChartPost) {
 	$('#sidebar').hide();
-
 
 	$scope.aceLoad = function(_editor) {
 		_editor.setOptions( {
@@ -13,7 +12,6 @@ angular.module('zingClient')
 			enableLiveAutocompletion: true
 		});
 	};
-
 
 	Charts.get({ id: $stateParams.id}, function (data) {	
 		console.log("success!: " + JSON.stringify(data));
@@ -40,6 +38,5 @@ angular.module('zingClient')
 		};
 
 	});
-
 
 }]);

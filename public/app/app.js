@@ -96,25 +96,3 @@ onEnter: function () {
 });
 
 
-/*.config(function($routeProvider) {
-  $routeProvider
-  .when('/', {
-  controller:'AdminCtrl',
-  templateUrl:'/app/admin/views/home.html'
-
-  })
-  .when('/somethingelse', {
-  controller:'ClientListCtrl',
-  templateUrl:'/app/clients/views/list.html'
-
-  })
-  .when('/client/:clientId', {
-  controller:'ClientDetailCtrl',
-  templateUrl:'/app/clients/views/command.html'
-  })
-
-  })
-  .run(function($rootScope, $route) {
-  $rootScope.layoutPartial = function(partialName) { return $route.current[partialName] };
-  });*/
-
