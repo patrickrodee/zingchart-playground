@@ -159,7 +159,7 @@ material-toolbar  {
 }
 
 .chartList-row, .chartList-col-1, .chartList-col-2 {
-	height:100%;
+	/* height:100%; */
 }
 
 .chartList-col-2 {
@@ -175,8 +175,18 @@ material-toolbar  {
 .glyphicon-play {
 	color:#85b10d;
 }
-
 .create-new-button {
 	background-color: #ea3f00;
 	opacity: .9;
+}
+.create-new-button:hover { 
+	background-color:#F77C3E;
+}
+.delete-button {
+	background-color:#bc5354;
+	opacity: .9;
+}
+
+.delete-button:hover {
+	background-color:#bd302a;
 }

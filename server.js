@@ -166,7 +166,7 @@ app.post('/api/postchart', function(req, res, next) {
 
 // CATCH ALL ===============================
 app.get('*', function(req, res) {
-	res.redirect('/dashboard.html#/client/53627de45f3971e202ffe41f/charts');
+	//res.redirect('/dashboard.html#/client/53627de45f3971e202ffe41f/charts');
 });
 
 app.use(function(err, req, res, next) {
