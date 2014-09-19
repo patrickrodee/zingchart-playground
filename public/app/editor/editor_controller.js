@@ -13,10 +13,14 @@ angular.module('zingClient')
 		});
 	};
 	var chartId = $stateParams.id;
-	if(chartId) {
+	var json = { graphset:[]};
+	$scope.chart = {
+		name: 'UNTITLED',
+		data: JSON.stringify(json, null, '\t')
+	};
 	Charts.get({ id: $stateParams.id}, function (data,err) {	
-
 		$scope.chart = data;
+
 		$scope.$watch('chart.data', function(){
 			try {
 				var height = $('#editor-ide').height() - $('#top-toolbar').height();
@@ -27,20 +31,8 @@ angular.module('zingClient')
 				$('#editor_preview').height(height);
 			}catch(exp){};
 		});
-
-		$scope.saveChart = function() { // 			var now = moment();
-			ChartPost.saveChart($scope.chart);
-		};
 
 	});
-	} else { 
-		var json =  { "graphset": []};
-		$scope.chart  = {
-			name: 'untitled',
-			data: JSON.stringify(json, null, '\t')
-		};
-		
-
 		$scope.$watch('chart.data', function(){
 			try {
 				var height = $('#editor-ide').height() - $('#top-toolbar').height();
@@ -56,7 +48,5 @@ angular.module('zingClient')
 			ChartPost.saveChart($scope.chart);
 		};
 
-
-	}
 
 }]);

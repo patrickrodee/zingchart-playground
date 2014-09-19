@@ -152,11 +152,6 @@ app.del('/api/charts/:id', function(req, res){
 // POST a Chart =============================================
 app.post('/api/postchart', function(req, res, next) {
 
-	Chart.findById(req.body._id, function(err, res){
-		if (res) {
-			res.delete();
-		}
-	});
 	var chart = new Chart({
 		zingId: 	req.body.zingId,
 		name: 		req.body.name,
